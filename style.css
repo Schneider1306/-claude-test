@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  color: #222;
+  background: #f9f8f6;
+  line-height: 1.6;
+}
+
+/* ── Шапка ── */
+header {
+  background: #1a2e4a;
+  color: #fff;
+  text-align: center;
+  padding: 80px 20px 60px;
+}
+
+header h1 {
+  font-size: 2.4rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+header p.subtitle {
+  font-size: 1.1rem;
+  color: #a8bfd4;
+  font-style: italic;
+}
+
+header p.tagline {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #cdd8e3;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Навигация ── */
+nav {
+  background: #24406b;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 14px 20px;
+}
+
+nav a {
+  color: #d0dde9;
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+/* ── Секции ── */
+section {
+  max-width: 860px;
+  margin: 60px auto;
+  padding: 0 24px;
+}
+
+section h2 {
+  font-size: 1.7rem;
+  color: #1a2e4a;
+  margin-bottom: 32px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #c9a84c;
+  display: inline-block;
+}
+
+/* ── Блок «О себе» ── */
+#about p {
+  font-size: 1.05rem;
+  color: #444;
+  max-width: 680px;
+}
+
+/* ── Услуги ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.service-card {
+  background: #fff;
+  border: 1px solid #dde3ea;
+  border-top: 3px solid #1a2e4a;
+  border-radius: 4px;
+  padding: 24px 20px;
+}
+
+.service-card h3 {
+  font-size: 1rem;
+  color: #1a2e4a;
+  margin-bottom: 8px;
+}
+
+.service-card p {
+  font-size: 0.92rem;
+  color: #666;
+}
+
+/* ── Контакты ── */
+#contacts .contacts-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#contacts .contacts-list li {
+  font-size: 1rem;
+  color: #444;
+}
+
+#contacts .contacts-list li span.label {
+  font-weight: bold;
+  color: #1a2e4a;
+  display: inline-block;
+  width: 110px;
+}
+
+#contacts .contacts-list li a {
+  color: #24406b;
+  text-decoration: none;
+}
+
+#contacts .contacts-list li a:hover {
+  text-decoration: underline;
+}
+
+/* ── Подвал ── */
+footer {
+  background: #1a2e4a;
+  color: #7a94ab;
+  text-align: center;
+  padding: 24px 20px;
+  font-size: 0.85rem;
+  margin-top: 80px;
+}
