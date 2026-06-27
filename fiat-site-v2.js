@@ -117,7 +117,8 @@ function setupReveal() {
     document.body.style.overflow = '';
   }
 
-  burger.addEventListener('click', () => {
+  burger.addEventListener('click', (e) => {
+    e.stopPropagation();
     burger.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
   });
 
