@@ -172,8 +172,8 @@ ul, ol { list-style: none; }
 /* Burger */
 .burger {
   display: none;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   touch-action: manipulation;
   align-items: center;
   justify-content: center;
@@ -262,7 +262,7 @@ ul, ol { list-style: none; }
 
 .btn--gold {
   background: var(--gold);
-  color: var(--white);
+  color: #081426;
   padding: 15px 36px;
   font-size: 0.95rem;
 }
@@ -271,6 +271,9 @@ ul, ol { list-style: none; }
 /* ================================================================
    SECTIONS
    ================================================================ */
+section {
+  scroll-margin-top: 100px;
+}
 .section {
   padding: 88px 0;
   background: var(--warm);
@@ -574,6 +577,29 @@ ul, ol { list-style: none; }
   color: var(--muted);
   line-height: 1.8;
 }
+.about__extra {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.about__expand {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  margin-top: 18px;
+  color: var(--blue);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+}
+.about__expand .acc-chevron {
+  transition: transform 0.3s ease;
+  color: var(--blue);
+}
+.about__expand[aria-expanded="true"] .acc-chevron {
+  transform: rotate(180deg);
+}
 
 /* ================================================================
    PROCESS (vertical timeline)
@@ -685,7 +711,7 @@ ul, ol { list-style: none; }
 }
 .contacts__desc {
   font-size: 0.95rem;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.72);
   max-width: 500px;
   margin: 0 auto 40px;
   line-height: 1.75;
@@ -703,8 +729,9 @@ ul, ol { list-style: none; }
   align-items: center;
   gap: 7px;
   padding: 8px 14px;
+  min-height: 48px;
   font-size: 0.88rem;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.5);
   transition: color 0.2s;
 }
 .contact-link:hover { color: rgba(255,255,255,0.85); }
@@ -758,6 +785,36 @@ ul, ol { list-style: none; }
   color: rgba(255,255,255,0.22);
   line-height: 1.65;
 }
+
+/* ================================================================
+   BACK TO TOP
+   ================================================================ */
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  transform: translateY(8px);
+  z-index: 150;
+  box-shadow: 0 2px 16px rgba(8,20,38,0.25);
+  touch-action: manipulation;
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+.back-to-top:hover { background: #1d4b84; }
 
 /* ================================================================
    SCROLL REVEAL
@@ -817,16 +874,29 @@ ul, ol { list-style: none; }
 @media (max-width: 768px) {
   :root { --px: 20px; }
 
-  .section { padding: 64px 0; }
+  .section { padding: 52px 0; }
 
   /* Hero */
-  .hero { padding: 52px 0 68px; }
+  .hero { padding: 48px 0 60px; }
   .hero__cta { flex-direction: column; }
   .hero__cta .btn { width: 100%; justify-content: center; }
 
-  /* Trust bar */
-  .trust-bar { padding: 22px 0; }
-  .trust-item { padding: 6px 20px; }
+  /* Trust bar: 2×2 grid, no horizontal scroll */
+  .trust-bar { padding: 0; }
+  .trust-bar__scroll {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow-x: unset;
+    padding-inline: 0;
+  }
+  .trust-divider { display: none; }
+  .trust-item {
+    padding: 18px 16px;
+    flex-shrink: unset;
+    border: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+  }
+  .trust-item__value { white-space: normal; }
 
   /* Who */
   .who-grid {
@@ -846,13 +916,23 @@ ul, ol { list-style: none; }
   .practice-grid { display: none; }
   .practice-accordion { display: block; }
 
+  /* About expand */
+  .about__extra { display: none; }
+  .about__extra.open { display: flex; }
+  .about__expand { display: flex; }
+
   /* Process */
   .process-list { max-width: 100%; }
 
   /* Contacts */
-  .contacts { padding: 64px 0; }
-  .contacts__info { flex-direction: column; gap: 2px; }
-  .contacts__sep { width: 40px; height: 1px; }
+  .contacts { padding: 52px 0; }
+  .contacts__info {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .contacts__sep { display: none; }
+  .contact-link { justify-content: center; width: 100%; }
 }
 
 /* ================================================================

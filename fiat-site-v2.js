@@ -163,6 +163,41 @@ function setupAccordions() {
 }
 
 /* ================================================================
+   ABOUT — expand / collapse (mobile)
+   ================================================================ */
+(function () {
+  const btn   = document.getElementById('aboutExpand');
+  const extra = document.getElementById('aboutExtra');
+  if (!btn || !extra) return;
+
+  btn.addEventListener('click', function () {
+    const open = extra.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    btn.querySelector('span').textContent = open ? 'Свернуть' : 'Подробнее';
+  });
+})();
+
+/* ================================================================
+   BACK TO TOP
+   ================================================================ */
+(function () {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      btn.classList.toggle('visible', window.scrollY > 800);
+      ticking = false;
+    });
+  }, { passive: true });
+
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+
+/* ================================================================
    INIT
    ================================================================ */
 document.addEventListener('DOMContentLoaded', () => {
