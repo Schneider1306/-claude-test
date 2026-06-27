@@ -7,25 +7,18 @@
   const intro = document.getElementById('intro');
   if (!intro) return;
 
-  // Respect prefers-reduced-motion
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     intro.remove();
     return;
   }
 
-  const logo = intro.querySelector('.intro__logo');
-  const seen = sessionStorage.getItem('fj_intro_v2');
-
-  // Lock body scroll while intro shows
   document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
   history.scrollRestoration = 'manual';
 
-  const APPEAR_MS = 1600;
-  const HOLD_MS   = 22000;
-  const FADE_MS   = 1400;
+  let done = false;
 
-  function unlockAndReveal() {
+  function unlock() {
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
     window.scrollTo(0, 0);
@@ -33,36 +26,29 @@
     revealHero();
   }
 
-  function dismissIntro() {
-    setTimeout(revealHero, FADE_MS / 2);
-    intro.style.transition = `opacity ${FADE_MS}ms cubic-bezier(0.4, 0, 0.2, 1)`;
-    intro.style.opacity = '0';
-    setTimeout(unlockAndReveal, FADE_MS);
+  function onAnimEnd(e) {
+    if (e.animationName !== 'introFade') return;
+    if (done) return;
+    done = true;
+    unlock();
   }
 
-  function runIntro() {
-    sessionStorage.setItem('fj_intro_v2', '1');
-    logo.style.transition = [
-      `opacity ${APPEAR_MS}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`,
-      `transform ${APPEAR_MS}ms cubic-bezier(0.16, 0.84, 0.44, 1)`,
-    ].join(', ');
+  // CSS animation drives the 25 s sequence; animationend is the trigger
+  intro.addEventListener('animationend', onAnimEnd);
+  // Fallback for iOS Safari where animationend can be unreliable
+  setTimeout(function () { if (!done) { done = true; unlock(); } }, 25500);
 
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      logo.style.opacity = '1';
-      logo.style.transform = 'translateY(0) scale(1)';
-      setTimeout(dismissIntro, APPEAR_MS + HOLD_MS);
-    }));
-  }
-
-  intro.addEventListener('click', function onSkip() {
-    intro.removeEventListener('click', onSkip);
-    revealHero();
+  // Tap anywhere to skip
+  intro.addEventListener('click', function () {
+    if (done) return;
+    done = true;
+    intro.style.animation = 'none';
+    void intro.offsetHeight;
     intro.style.transition = 'opacity 0.4s ease';
     intro.style.opacity = '0';
-    setTimeout(unlockAndReveal, 400);
-  });
-
-  runIntro();
+    revealHero();
+    setTimeout(unlock, 400);
+  }, { once: true });
 })();
 
 /* ================================================================

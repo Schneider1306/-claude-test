@@ -50,6 +50,15 @@ ul, ol { list-style: none; }
 /* ================================================================
    INTRO
    ================================================================ */
+@keyframes introFade {
+  0%, 94.4% { opacity: 1; }
+  100%       { opacity: 0; }
+}
+@keyframes logoRise {
+  from { opacity: 0; transform: translateY(20px) scale(0.94); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 .intro {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -60,12 +69,12 @@ ul, ol { list-style: none; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  animation: introFade 25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 .intro__logo {
   width: min(220px, 58vw);
-  opacity: 0;
-  transform: translateY(20px) scale(0.94);
   will-change: opacity, transform;
+  animation: logoRise 1.6s cubic-bezier(0.16, 0.84, 0.44, 1) both;
 }
 .intro__hint {
   position: absolute;
