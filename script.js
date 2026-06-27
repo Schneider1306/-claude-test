@@ -1,15 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const h1   = document.querySelector('.hero h1');
-  const text = h1?.dataset.text || '';
+  const intro = document.getElementById('courtIntro');
+  const h1    = document.querySelector('.hero h1');
+  const text  = h1?.dataset.text || '';
+  let started = false;
 
-  if (h1 && text) {
-    h1.textContent = '';
-    typewriter(h1, text, 32, () => {
-      document.querySelector('.hero__sub')?.classList.add('revealed');
-      document.querySelector('.hero .btn')?.classList.add('revealed');
-    });
+  function startAfterIntro() {
+    if (started) return;
+    started = true;
+    intro?.remove();
+    if (h1 && text) {
+      h1.textContent = '';
+      typewriter(h1, text, 32, () => {
+        document.querySelector('.hero__sub')?.classList.add('revealed');
+        document.querySelector('.hero .btn')?.classList.add('revealed');
+      });
+    }
   }
 
+  // Fallback: запускаем через 3.6s если animationend не сработал
+  const fallback = setTimeout(startAfterIntro, 3600);
+
+  intro?.addEventListener('animationend', (e) => {
+    if (e.target !== intro) return;
+    clearTimeout(fallback);
+    startAfterIntro();
+  });
+
+  // Scroll-reveal с каскадным появлением
   const io = new IntersectionObserver((entries) => {
     entries.forEach(({ target, isIntersecting }) => {
       if (isIntersecting) {
