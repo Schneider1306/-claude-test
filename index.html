@@ -5,13 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Илья Воронов — юрист в сфере медицины</title>
   <link rel="stylesheet" href="style.css" />
+  <noscript><style>
+    .court-intro{display:none!important}
+    .hero__sub,.hero .btn,.reveal{opacity:1!important;transform:none!important}
+  </style></noscript>
 </head>
 <body>
+
+  <!-- Экран-заставка -->
+  <div class="court-intro" id="courtIntro">
+    <div class="court-intro__inner">
+      <span class="court-intro__scales">⚖️</span>
+      <div class="court-intro__line"></div>
+      <div class="court-intro__text">Заседание&nbsp;открыто</div>
+    </div>
+  </div>
 
   <!-- Навигация -->
   <header class="nav">
     <div class="nav__inner">
-      <span class="nav__brand">Илья Алексеевич Воронов</span>
+      <span class="nav__brand">⚖️&nbsp; Илья Алексеевич Воронов</span>
       <ul class="nav__links">
         <li><a href="#who">Кому помогаю</a></li>
         <li><a href="#services">Услуги</a></li>
@@ -25,7 +38,7 @@
   <!-- Hero -->
   <section class="hero">
     <p class="hero__eyebrow">Юридическая практика в сфере медицины</p>
-    <h1>Защита врачей и клиник в спорах с пациентами и контролирующими органами</h1>
+    <h1 data-text="Защита врачей и клиник в спорах с пациентами и контролирующими органами">Защита врачей и клиник в спорах с пациентами и контролирующими органами</h1>
     <p class="hero__sub">
       Помогаю медицинским работникам и организациям выстраивать правовую позицию,
       отвечать на претензии и сопровождать проверки.
@@ -41,19 +54,19 @@
       <p class="section__desc">Работаю исключительно на стороне медицинского сообщества — врачей, клиник и медицинских организаций.</p>
       <div class="grid-3">
 
-        <div class="card card--who">
+        <div class="card card--who reveal">
           <div class="card__icon">⚕️</div>
           <div class="card__title">Врачи и медицинские работники</div>
           <div class="card__text">Защита при претензиях и исках пациентов, сопровождение при проверках и дисциплинарных разбирательствах.</div>
         </div>
 
-        <div class="card card--who">
+        <div class="card card--who reveal">
           <div class="card__icon">🏥</div>
           <div class="card__title">Частные клиники</div>
           <div class="card__text">Правовое сопровождение в спорах о качестве услуг, взаимодействие с надзорными органами и защита в суде.</div>
         </div>
 
-        <div class="card card--who">
+        <div class="card card--who reveal">
           <div class="card__icon">🔬</div>
           <div class="card__title">Медцентры и лаборатории</div>
           <div class="card__text">Анализ рисков, подготовка позиции при проверках Роспотребнадзора, прокуратуры и других ведомств.</div>
@@ -71,7 +84,7 @@
       <p class="section__desc">Специализируюсь на медицинском праве — веду дела, в которых важно понимать не только закон, но и специфику отрасли.</p>
       <div class="services-grid">
 
-        <div class="service-card">
+        <div class="service-card reveal">
           <span class="service-card__dot"></span>
           <div>
             <div class="service-card__title">Защита клиники в суде</div>
@@ -79,7 +92,7 @@
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card reveal">
           <span class="service-card__dot"></span>
           <div>
             <div class="service-card__title">Ответы на претензии пациентов</div>
@@ -87,7 +100,7 @@
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card reveal">
           <span class="service-card__dot"></span>
           <div>
             <div class="service-card__title">Споры о качестве медицинских услуг</div>
@@ -95,7 +108,7 @@
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card reveal">
           <span class="service-card__dot"></span>
           <div>
             <div class="service-card__title">Сопровождение проверок</div>
@@ -103,7 +116,7 @@
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card reveal">
           <span class="service-card__dot"></span>
           <div>
             <div class="service-card__title">Анализ медицинской документации</div>
@@ -111,7 +124,7 @@
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card reveal">
           <span class="service-card__dot"></span>
           <div>
             <div class="service-card__title">Подготовка правовой позиции</div>
@@ -119,7 +132,7 @@
           </div>
         </div>
 
-        <div class="service-card">
+        <div class="service-card reveal">
           <span class="service-card__dot"></span>
           <div>
             <div class="service-card__title">Работа с экспертизой</div>
@@ -139,7 +152,7 @@
       <p class="section__desc">Чётко и без лишних шагов — от первого обращения до результата.</p>
       <div class="steps">
 
-        <div class="step">
+        <div class="step reveal">
           <div class="step__num">1</div>
           <div class="step__body">
             <div class="step__title">Консультация</div>
@@ -147,7 +160,7 @@
           </div>
         </div>
 
-        <div class="step">
+        <div class="step reveal">
           <div class="step__num">2</div>
           <div class="step__body">
             <div class="step__title">Анализ документов</div>
@@ -155,7 +168,7 @@
           </div>
         </div>
 
-        <div class="step">
+        <div class="step reveal">
           <div class="step__num">3</div>
           <div class="step__body">
             <div class="step__title">Правовая позиция</div>
@@ -163,7 +176,7 @@
           </div>
         </div>
 
-        <div class="step">
+        <div class="step reveal">
           <div class="step__num">4</div>
           <div class="step__body">
             <div class="step__title">Сопровождение</div>
@@ -183,7 +196,7 @@
       <p class="section__desc">Без лишних обещаний — только то, что действительно отличает работу с профессионалом.</p>
       <div class="why-grid">
 
-        <div class="why-card">
+        <div class="why-card reveal">
           <div class="why-card__mark">01</div>
           <div>
             <div class="why-card__title">Узкая специализация</div>
@@ -191,7 +204,7 @@
           </div>
         </div>
 
-        <div class="why-card">
+        <div class="why-card reveal">
           <div class="why-card__mark">02</div>
           <div>
             <div class="why-card__title">Прозрачная позиция</div>
@@ -199,7 +212,7 @@
           </div>
         </div>
 
-        <div class="why-card">
+        <div class="why-card reveal">
           <div class="why-card__mark">03</div>
           <div>
             <div class="why-card__title">Полное сопровождение</div>
@@ -207,7 +220,7 @@
           </div>
         </div>
 
-        <div class="why-card">
+        <div class="why-card reveal">
           <div class="why-card__mark">04</div>
           <div>
             <div class="why-card__title">Удалённая работа</div>
@@ -226,15 +239,15 @@
       <h2 class="section__title">Связаться со мной</h2>
       <p class="section__desc">Напишите или позвоните — расскажите о ситуации, и я скажу, чем смогу помочь.</p>
       <ul class="contacts-list">
-        <li>
+        <li class="reveal">
           <span class="contacts-list__label">Телефон</span>
           <span class="contacts-list__val"><a href="tel:+70000000000">+7 (000) 000-00-00</a></span>
         </li>
-        <li>
+        <li class="reveal">
           <span class="contacts-list__label">Telegram</span>
           <span class="contacts-list__val"><a href="https://t.me/username">@username</a></span>
         </li>
-        <li>
+        <li class="reveal">
           <span class="contacts-list__label">E-mail</span>
           <span class="contacts-list__val"><a href="mailto:voronov@example.com">voronov@example.com</a></span>
         </li>
@@ -248,5 +261,6 @@
     <p style="margin-top:6px;">© 2026 &nbsp;·&nbsp; Информация на сайте не является офертой и не гарантирует конкретного результата по делу.</p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
