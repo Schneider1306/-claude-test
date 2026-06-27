@@ -125,7 +125,11 @@ function setupReveal() {
 
   // Close on outside click
   document.addEventListener('click', e => {
-    if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== burger) {
+    if (
+      menu.classList.contains('open') &&
+      !menu.contains(e.target) &&
+      !burger.contains(e.target)
+    ) {
       closeMenu();
     }
   });
