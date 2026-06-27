@@ -6,9 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const text  = h1?.dataset.text || '';
   let started = false;
 
+  // Блокируем прокрутку пока заставка показывается
+  if (intro) {
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  }
+
   function startAfterIntro() {
     if (started) return;
     started = true;
+    // Разблокируем прокрутку и возвращаем наверх
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
     window.scrollTo(0, 0);
     intro?.remove();
     if (h1 && text) {
