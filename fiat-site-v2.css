@@ -292,10 +292,8 @@ ul, ol { list-style: none; }
   border-bottom: 1px solid var(--border);
 }
 .hero__inner {
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 72px;
-  align-items: center;
+  display: block;
+  max-width: 720px;
 }
 .eyebrow {
   display: block;
@@ -535,10 +533,8 @@ ul, ol { list-style: none; }
    ABOUT
    ================================================================ */
 .about__inner {
-  display: grid;
-  grid-template-columns: 380px 1fr;
-  gap: 72px;
-  align-items: start;
+  display: block;
+  max-width: 720px;
 }
 .about__role {
   font-size: 0.82rem;
@@ -786,21 +782,11 @@ ul, ol { list-style: none; }
   .mobile-menu { display: block; }
 
   .hero__inner {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-  .hero__photo {
-    order: -1;
-    max-width: 300px;
-    margin: 0 auto;
+    max-width: 100%;
   }
 
   .about__inner {
-    grid-template-columns: 1fr;
-    gap: 44px;
-  }
-  .about__photo {
-    max-width: 340px;
+    max-width: 100%;
   }
 }
 
