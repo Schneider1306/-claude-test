@@ -21,9 +21,9 @@
   document.body.style.overflow = 'hidden';
   history.scrollRestoration = 'manual';
 
-  const APPEAR_MS   = seen ? 200 : 800;
-  const HOLD_MS     = seen ? 0   : 5000;
-  const FADE_MS     = seen ? 200 : 700;
+  const APPEAR_MS = seen ? 500  : 1600;
+  const HOLD_MS   = seen ? 300  : 5000;
+  const FADE_MS   = seen ? 500  : 1400;
 
   function unlockAndReveal() {
     document.documentElement.style.overflow = '';
@@ -34,32 +34,32 @@
   }
 
   function dismissIntro() {
-    // Start revealing hero halfway through the fade-out
     setTimeout(revealHero, FADE_MS / 2);
-    intro.style.transition = `opacity ${FADE_MS}ms ease`;
+    intro.style.transition = `opacity ${FADE_MS}ms cubic-bezier(0.4, 0, 0.2, 1)`;
     intro.style.opacity = '0';
     setTimeout(unlockAndReveal, FADE_MS);
   }
 
   function runIntro() {
     sessionStorage.setItem('fj_intro_v2', '1');
-    logo.style.transition = `opacity ${APPEAR_MS}ms ease, transform ${APPEAR_MS}ms cubic-bezier(0.22, 0.84, 0.44, 1)`;
+    logo.style.transition = [
+      `opacity ${APPEAR_MS}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`,
+      `transform ${APPEAR_MS}ms cubic-bezier(0.16, 0.84, 0.44, 1)`,
+    ].join(', ');
 
-    // Double rAF ensures the initial state (opacity:0 scale:0.94) has painted
     requestAnimationFrame(() => requestAnimationFrame(() => {
       logo.style.opacity = '1';
-      logo.style.transform = 'scale(1)';
+      logo.style.transform = 'translateY(0) scale(1)';
       setTimeout(dismissIntro, APPEAR_MS + HOLD_MS);
     }));
   }
 
-  // Skip on any click/tap
   intro.addEventListener('click', function onSkip() {
     intro.removeEventListener('click', onSkip);
     revealHero();
-    intro.style.transition = 'opacity 0.2s ease';
+    intro.style.transition = 'opacity 0.4s ease';
     intro.style.opacity = '0';
-    setTimeout(unlockAndReveal, 200);
+    setTimeout(unlockAndReveal, 400);
   });
 
   runIntro();

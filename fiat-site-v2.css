@@ -62,9 +62,9 @@ ul, ol { list-style: none; }
   justify-content: center;
 }
 .intro__logo {
-  width: min(200px, 52vw);
+  width: min(220px, 58vw);
   opacity: 0;
-  transform: scale(0.94);
+  transform: translateY(20px) scale(0.94);
   will-change: opacity, transform;
 }
 .intro__hint {
