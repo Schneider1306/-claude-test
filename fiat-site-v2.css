@@ -72,7 +72,7 @@ ul, ol { list-style: none; }
   animation: introFade 25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 .intro__logo {
-  width: min(220px, 58vw);
+  width: min(360px, 88vw);
   will-change: opacity, transform;
   animation: logoRise 1.6s cubic-bezier(0.16, 0.84, 0.44, 1) both;
 }
