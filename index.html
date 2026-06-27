@@ -3,249 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Илья Воронов — юрист в сфере медицины</title>
+  <title>Илья Алексеевич Воронов — Юрист</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Навигация -->
-  <header class="nav">
-    <div class="nav__inner">
-      <span class="nav__brand">Илья Алексеевич Воронов</span>
-      <ul class="nav__links">
-        <li><a href="#who">Кому помогаю</a></li>
-        <li><a href="#services">Услуги</a></li>
-        <li><a href="#process">Как строится работа</a></li>
-        <li><a href="#why">Почему со мной</a></li>
-        <li><a href="#contacts">Контакты</a></li>
-      </ul>
-    </div>
+  <!-- Шапка -->
+  <header>
+    <h1>Илья Алексеевич Воронов</h1>
+    <p class="subtitle">Адвокат &middot; Стаж 15 лет</p>
+    <p class="tagline">Профессиональная юридическая помощь физическим лицам и бизнесу. Защищаю ваши права и интересы.</p>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <p class="hero__eyebrow">Юридическая практика в сфере медицины</p>
-    <h1>Защита врачей и клиник в спорах с пациентами и контролирующими органами</h1>
-    <p class="hero__sub">
-      Помогаю медицинским работникам и организациям выстраивать правовую позицию,
-      отвечать на претензии и сопровождать проверки.
+  <!-- Навигация -->
+  <nav>
+    <a href="#about">О себе</a>
+    <a href="#services">Услуги</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+
+  <!-- О себе -->
+  <section id="about">
+    <h2>О себе</h2>
+    <p>
+      Более 15 лет я помогаю клиентам решать юридические вопросы любой сложности.
+      Специализируюсь на гражданском, трудовом и семейном праве. Работаю
+      индивидуально с каждым клиентом: детально разбираю ситуацию, предлагаю
+      оптимальную стратегию и сопровождаю до результата.
     </p>
-    <a href="#contacts" class="btn btn--primary">Получить консультацию</a>
-  </section>
-
-  <!-- Кому помогаю -->
-  <section class="section section--alt" id="who">
-    <div class="section__inner">
-      <p class="section__label">Клиенты</p>
-      <h2 class="section__title">Кому я помогаю</h2>
-      <p class="section__desc">Работаю исключительно на стороне медицинского сообщества — врачей, клиник и медицинских организаций.</p>
-      <div class="grid-3">
-
-        <div class="card card--who">
-          <div class="card__icon">⚕️</div>
-          <div class="card__title">Врачи и медицинские работники</div>
-          <div class="card__text">Защита при претензиях и исках пациентов, сопровождение при проверках и дисциплинарных разбирательствах.</div>
-        </div>
-
-        <div class="card card--who">
-          <div class="card__icon">🏥</div>
-          <div class="card__title">Частные клиники</div>
-          <div class="card__text">Правовое сопровождение в спорах о качестве услуг, взаимодействие с надзорными органами и защита в суде.</div>
-        </div>
-
-        <div class="card card--who">
-          <div class="card__icon">🔬</div>
-          <div class="card__title">Медцентры и лаборатории</div>
-          <div class="card__text">Анализ рисков, подготовка позиции при проверках Роспотребнадзора, прокуратуры и других ведомств.</div>
-        </div>
-
-      </div>
-    </div>
   </section>
 
   <!-- Услуги -->
-  <section class="section" id="services">
-    <div class="section__inner">
-      <p class="section__label">Направления работы</p>
-      <h2 class="section__title">Чем я занимаюсь</h2>
-      <p class="section__desc">Специализируюсь на медицинском праве — веду дела, в которых важно понимать не только закон, но и специфику отрасли.</p>
-      <div class="services-grid">
+  <section id="services">
+    <h2>Услуги</h2>
+    <div class="services-grid">
 
-        <div class="service-card">
-          <span class="service-card__dot"></span>
-          <div>
-            <div class="service-card__title">Защита клиники в суде</div>
-            <div class="service-card__text">Представление интересов в судах по искам о защите прав потребителей, возмещении вреда здоровью, компенсации морального ущерба.</div>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <span class="service-card__dot"></span>
-          <div>
-            <div class="service-card__title">Ответы на претензии пациентов</div>
-            <div class="service-card__text">Подготовка юридически выверенных ответов на досудебные претензии с анализом рисков и стратегии урегулирования.</div>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <span class="service-card__dot"></span>
-          <div>
-            <div class="service-card__title">Споры о качестве медицинских услуг</div>
-            <div class="service-card__text">Оценка обоснованности требований, формирование правовой позиции, работа с доказательной базой.</div>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <span class="service-card__dot"></span>
-          <div>
-            <div class="service-card__title">Сопровождение проверок</div>
-            <div class="service-card__text">Подготовка к проверкам Роспотребнадзора, прокуратуры и других контролирующих органов, юридическое сопровождение на всех этапах.</div>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <span class="service-card__dot"></span>
-          <div>
-            <div class="service-card__title">Анализ медицинской документации</div>
-            <div class="service-card__text">Правовая оценка историй болезни, договоров, информированных согласий и иных документов с точки зрения рисков.</div>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <span class="service-card__dot"></span>
-          <div>
-            <div class="service-card__title">Подготовка правовой позиции</div>
-            <div class="service-card__text">Разработка аргументированной позиции для досудебного урегулирования или судебного процесса с учётом практики в медицинских спорах.</div>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <span class="service-card__dot"></span>
-          <div>
-            <div class="service-card__title">Работа с экспертизой</div>
-            <div class="service-card__text">Оценка заключений судебно-медицинских экспертов, подготовка вопросов для экспертизы, взаимодействие с экспертными учреждениями.</div>
-          </div>
-        </div>
-
+      <div class="service-card">
+        <h3>Гражданские споры</h3>
+        <p>Представление интересов в суде, подготовка исков, досудебное урегулирование конфликтов.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Как строится работа -->
-  <section class="section section--alt" id="process">
-    <div class="section__inner">
-      <p class="section__label">Процесс</p>
-      <h2 class="section__title">Как строится работа</h2>
-      <p class="section__desc">Чётко и без лишних шагов — от первого обращения до результата.</p>
-      <div class="steps">
-
-        <div class="step">
-          <div class="step__num">1</div>
-          <div class="step__body">
-            <div class="step__title">Консультация</div>
-            <div class="step__text">Разбираем ситуацию, определяем суть требований и ключевые риски.</div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step__num">2</div>
-          <div class="step__body">
-            <div class="step__title">Анализ документов</div>
-            <div class="step__text">Изучаю медицинскую документацию, договоры и материалы дела.</div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step__num">3</div>
-          <div class="step__body">
-            <div class="step__title">Правовая позиция</div>
-            <div class="step__text">Формирую аргументированную стратегию защиты, согласовываю её с вами.</div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step__num">4</div>
-          <div class="step__body">
-            <div class="step__title">Сопровождение</div>
-            <div class="step__text">Веду переписку, представляю интересы в суде или при проверке до завершения дела.</div>
-          </div>
-        </div>
-
+      <div class="service-card">
+        <h3>Семейное право</h3>
+        <p>Развод, раздел имущества, алименты, споры об определении места жительства детей.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Почему со мной удобно -->
-  <section class="section" id="why">
-    <div class="section__inner">
-      <p class="section__label">Преимущества</p>
-      <h2 class="section__title">Почему со мной удобно</h2>
-      <p class="section__desc">Без лишних обещаний — только то, что действительно отличает работу с профессионалом.</p>
-      <div class="why-grid">
-
-        <div class="why-card">
-          <div class="why-card__mark">01</div>
-          <div>
-            <div class="why-card__title">Узкая специализация</div>
-            <div class="why-card__text">Работаю только в сфере медицинского права — понимаю отраслевую специфику, документооборот и логику споров изнутри.</div>
-          </div>
-        </div>
-
-        <div class="why-card">
-          <div class="why-card__mark">02</div>
-          <div>
-            <div class="why-card__title">Прозрачная позиция</div>
-            <div class="why-card__text">Честно оцениваю перспективы дела на старте. Не берусь за заведомо бесперспективные ситуации и не обещаю гарантированного результата.</div>
-          </div>
-        </div>
-
-        <div class="why-card">
-          <div class="why-card__mark">03</div>
-          <div>
-            <div class="why-card__title">Полное сопровождение</div>
-            <div class="why-card__text">Веду дело от первой консультации до финального решения — вы не остаётесь один на один с процессом.</div>
-          </div>
-        </div>
-
-        <div class="why-card">
-          <div class="why-card__mark">04</div>
-          <div>
-            <div class="why-card__title">Удалённая работа</div>
-            <div class="why-card__text">Работаю с клиниками и врачами из любого региона. Документы и коммуникация — онлайн, без лишних встреч.</div>
-          </div>
-        </div>
-
+      <div class="service-card">
+        <h3>Трудовые споры</h3>
+        <p>Незаконное увольнение, невыплата зарплаты, восстановление на работе.</p>
       </div>
+
+      <div class="service-card">
+        <h3>Недвижимость</h3>
+        <p>Сопровождение сделок, проверка документов, споры о праве собственности.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>Юридические консультации</h3>
+        <p>Устные и письменные консультации по любым правовым вопросам. Первичная консультация бесплатно.</p>
+      </div>
+
+      <div class="service-card">
+        <h3>Составление документов</h3>
+        <p>Договоры, претензии, жалобы, исковые заявления и иные юридические документы.</p>
+      </div>
+
     </div>
   </section>
 
   <!-- Контакты -->
-  <section class="section section--alt" id="contacts">
-    <div class="section__inner">
-      <p class="section__label">Контакты</p>
-      <h2 class="section__title">Связаться со мной</h2>
-      <p class="section__desc">Напишите или позвоните — расскажите о ситуации, и я скажу, чем смогу помочь.</p>
-      <ul class="contacts-list">
-        <li>
-          <span class="contacts-list__label">Телефон</span>
-          <span class="contacts-list__val"><a href="tel:+70000000000">+7 (000) 000-00-00</a></span>
-        </li>
-        <li>
-          <span class="contacts-list__label">Telegram</span>
-          <span class="contacts-list__val"><a href="https://t.me/username">@username</a></span>
-        </li>
-        <li>
-          <span class="contacts-list__label">E-mail</span>
-          <span class="contacts-list__val"><a href="mailto:voronov@example.com">voronov@example.com</a></span>
-        </li>
-      </ul>
-    </div>
+  <section id="contacts">
+    <h2>Контакты</h2>
+    <ul class="contacts-list">
+      <li><span class="label">Телефон:</span> <a href="tel:+74951234567">+7 (495) 123-45-67</a></li>
+      <li><span class="label">E-mail:</span> <a href="mailto:voronov@pravo.ru">voronov@pravo.ru</a></li>
+      <li><span class="label">Адрес:</span> Москва, ул. Арбат, д. 12, офис 305</li>
+      <li><span class="label">Режим работы:</span> Пн–Пт, 9:00–19:00</li>
+    </ul>
   </section>
 
-  <!-- Footer -->
+  <!-- Подвал -->
   <footer>
-    <p><strong>Илья Алексеевич Воронов</strong> — юрист в сфере медицины</p>
-    <p style="margin-top:6px;">© 2026 &nbsp;·&nbsp; Информация на сайте не является офертой и не гарантирует конкретного результата по делу.</p>
+    <p>&copy; 2026 Илья Алексеевич Воронов. Все права защищены.</p>
   </footer>
 
 </body>
