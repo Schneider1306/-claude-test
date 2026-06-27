@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+  history.scrollRestoration = 'manual';
+
   const intro = document.getElementById('courtIntro');
   const h1    = document.querySelector('.hero h1');
   const text  = h1?.dataset.text || '';
@@ -7,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function startAfterIntro() {
     if (started) return;
     started = true;
+    window.scrollTo(0, 0);
     intro?.remove();
     if (h1 && text) {
       h1.textContent = '';
