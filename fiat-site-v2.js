@@ -21,9 +21,9 @@
   document.body.style.overflow = 'hidden';
   history.scrollRestoration = 'manual';
 
-  const APPEAR_MS   = seen ? 200 : 700;
-  const HOLD_MS     = seen ? 0   : 700;
-  const FADE_MS     = seen ? 200 : 600;
+  const APPEAR_MS   = seen ? 200 : 800;
+  const HOLD_MS     = seen ? 0   : 1600;
+  const FADE_MS     = seen ? 200 : 700;
 
   function unlockAndReveal() {
     document.documentElement.style.overflow = '';
