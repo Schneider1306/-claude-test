@@ -22,7 +22,7 @@
   history.scrollRestoration = 'manual';
 
   const APPEAR_MS = 1600;
-  const HOLD_MS   = 5000;
+  const HOLD_MS   = 22000;
   const FADE_MS   = 1400;
 
   function unlockAndReveal() {
