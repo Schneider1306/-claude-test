@@ -14,7 +14,7 @@
   }
 
   const logo = intro.querySelector('.intro__logo');
-  const seen = sessionStorage.getItem('fj_intro');
+  const seen = sessionStorage.getItem('fj_intro_v2');
 
   // Lock body scroll while intro shows
   document.documentElement.style.overflow = 'hidden';
@@ -42,7 +42,7 @@
   }
 
   function runIntro() {
-    sessionStorage.setItem('fj_intro', '1');
+    sessionStorage.setItem('fj_intro_v2', '1');
     logo.style.transition = `opacity ${APPEAR_MS}ms ease, transform ${APPEAR_MS}ms cubic-bezier(0.22, 0.84, 0.44, 1)`;
 
     // Double rAF ensures the initial state (opacity:0 scale:0.94) has painted

@@ -19,14 +19,14 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23173A68'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia%2Cserif' font-size='13' fill='%23B49A67'%3EFJ%3C/text%3E%3C/svg%3E" />
 
   <!-- Preload coat of arms -->
-  <link rel="preload" as="image" href="logo.png" />
+  <link rel="preload" as="image" href="logo.webp" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Prata&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./fiat-site-v2.css" />
 
   <!-- Schema.org -->
   <script type="application/ld+json">
@@ -63,7 +63,7 @@
 
   <!-- Intro overlay -->
   <div class="intro" id="intro" aria-hidden="true">
-    <img class="intro__logo" src="logo.png" alt="" width="200" height="200" />
+    <img class="intro__logo" src="logo.webp" alt="" width="200" height="200" />
     <p class="intro__hint">Нажмите, чтобы продолжить</p>
   </div>
 
@@ -124,12 +124,6 @@
           <p class="hero__credentials" data-reveal data-delay="6">
             Более 10&nbsp;лет юридической практики&thinsp;&bull;&thinsp;магистр права&thinsp;&bull;&thinsp;опыт работы в Следственном комитете
           </p>
-        </div>
-        <div class="hero__photo" data-reveal data-delay="2" aria-hidden="true">
-          <div class="photo-placeholder">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <span>Фотография<br>Ильи Воронова</span>
-          </div>
         </div>
       </div>
     </section>
@@ -254,20 +248,14 @@
     <!-- About -->
     <section class="section section--white" id="about" aria-labelledby="aboutHeading">
       <div class="container about__inner">
-        <div class="about__photo" data-reveal aria-hidden="true">
-          <div class="photo-placeholder photo-placeholder--tall">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <span>Фотография<br>Ильи Воронова</span>
-          </div>
-        </div>
-        <div class="about__content" data-reveal data-delay="1">
+        <div class="about__content" data-reveal>
           <p class="section-label">Обо мне</p>
           <h2 class="section-title" id="aboutHeading">Илья Воронов</h2>
-          <p class="about__role">Основатель и именной партнёр FIAT JUSTITIA</p>
+          <p class="about__role">Юрист по медицинскому праву</p>
           <div class="about__text">
             <p>Медицинское право занимает особое место среди юридических специализаций: здесь правовая аргументация неотделима от понимания клинических стандартов, медицинской документации и того, как устроена отрасль изнутри.</p>
             <p>Я работаю исключительно на стороне медицинского сообщества. Это означает полное погружение в специфику: от порядка ведения медицинских карт и структуры информированных согласий до логики судебно-медицинских экспертиз и стандартов оказания медицинской помощи.</p>
-            <p>До юридической практики работал в Следственном комитете. Этот опыт даёт понимание того, как строится расследование сложных дел и каков процессуальный подход с противоположной стороны.</p>
+            <p>Ранее проходил службу в Следственном комитете Российской Федерации. Этот опыт даёт понимание того, как строится расследование сложных дел и каков процессуальный подход с противоположной стороны.</p>
             <p>Веду дела от первой претензии или уведомления о проверке до окончательного решения суда или контролирующего органа. Работаю удалённо с клиентами из любого региона России.</p>
           </div>
         </div>
@@ -414,6 +402,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="./fiat-site-v2.js" defer></script>
 </body>
 </html>
