@@ -71,7 +71,18 @@ ul, ol { list-style: none; }
   justify-content: center;
   animation: introFade 25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
+.intro::before {
+  content: '';
+  position: absolute;
+  width: 90vw;
+  max-width: 600px;
+  height: 90vw;
+  max-height: 600px;
+  background: radial-gradient(ellipse at center, rgba(210, 185, 120, 0.22) 0%, rgba(140, 110, 60, 0.08) 45%, transparent 70%);
+  pointer-events: none;
+}
 .intro__logo {
+  position: relative;
   width: min(360px, 88vw);
   will-change: opacity, transform;
   animation: logoRise 1.6s cubic-bezier(0.16, 0.84, 0.44, 1) both;
