@@ -1,78 +1,185 @@
-document.addEventListener('DOMContentLoaded', () => {
-  history.scrollRestoration = 'manual';
+'use strict';
 
-  const intro = document.getElementById('courtIntro');
-  const h1    = document.querySelector('.hero h1');
-  const text  = h1?.dataset.text || '';
-  let started = false;
+/* ================================================================
+   INTRO
+   ================================================================ */
+(function () {
+  const intro = document.getElementById('intro');
+  if (!intro) return;
 
-  // Блокируем прокрутку пока заставка показывается
-  if (intro) {
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
+  // Respect prefers-reduced-motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    intro.remove();
+    return;
   }
 
-  function startAfterIntro() {
-    if (started) return;
-    started = true;
-    // Разблокируем прокрутку и возвращаем наверх
+  const logo = intro.querySelector('.intro__logo');
+  const seen = sessionStorage.getItem('fj_intro');
+
+  // Lock body scroll while intro shows
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+  history.scrollRestoration = 'manual';
+
+  const APPEAR_MS   = seen ? 200 : 700;
+  const HOLD_MS     = seen ? 0   : 700;
+  const FADE_MS     = seen ? 200 : 600;
+
+  function unlockAndReveal() {
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
     window.scrollTo(0, 0);
-    intro?.remove();
-    if (h1 && text) {
-      h1.textContent = '';
-      typewriter(h1, text, 32, () => {
-        document.querySelector('.hero__sub')?.classList.add('revealed');
-        document.querySelector('.hero .btn')?.classList.add('revealed');
-      });
-    }
+    intro.remove();
+    revealHero();
   }
 
-  // Fallback: запускаем через 3.6s если animationend не сработал
-  const fallback = setTimeout(startAfterIntro, 3600);
+  function dismissIntro() {
+    // Start revealing hero halfway through the fade-out
+    setTimeout(revealHero, FADE_MS / 2);
+    intro.style.transition = `opacity ${FADE_MS}ms ease`;
+    intro.style.opacity = '0';
+    setTimeout(unlockAndReveal, FADE_MS);
+  }
 
-  intro?.addEventListener('animationend', (e) => {
-    if (e.target !== intro) return;
-    clearTimeout(fallback);
-    startAfterIntro();
+  function runIntro() {
+    sessionStorage.setItem('fj_intro', '1');
+    logo.style.transition = `opacity ${APPEAR_MS}ms ease, transform ${APPEAR_MS}ms cubic-bezier(0.22, 0.84, 0.44, 1)`;
+
+    // Double rAF ensures the initial state (opacity:0 scale:0.94) has painted
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      logo.style.opacity = '1';
+      logo.style.transform = 'scale(1)';
+      setTimeout(dismissIntro, APPEAR_MS + HOLD_MS);
+    }));
+  }
+
+  // Skip on any click/tap
+  intro.addEventListener('click', function onSkip() {
+    intro.removeEventListener('click', onSkip);
+    revealHero();
+    intro.style.transition = 'opacity 0.2s ease';
+    intro.style.opacity = '0';
+    setTimeout(unlockAndReveal, 200);
   });
 
-  // Scroll-reveal с каскадным появлением
+  runIntro();
+})();
+
+/* ================================================================
+   SCROLL REVEAL
+   ================================================================ */
+let heroRevealed = false;
+
+function revealHero() {
+  if (heroRevealed) return;
+  heroRevealed = true;
+  document.querySelectorAll('.hero [data-reveal]').forEach(el => {
+    el.classList.add('visible');
+  });
+}
+
+function setupReveal() {
   const io = new IntersectionObserver((entries) => {
     entries.forEach(({ target, isIntersecting }) => {
-      if (isIntersecting) {
-        target.classList.add('revealed');
-        io.unobserve(target);
-      }
+      if (!isIntersecting) return;
+      target.classList.add('visible');
+      io.unobserve(target);
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
 
-  document.querySelectorAll('.reveal').forEach((el, i) => {
-    el.style.setProperty('--stagger', `${(i % 4) * 0.1}s`);
-    io.observe(el);
-  });
-
-  document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('click', function () {
-      this.classList.add('btn--strike');
-      setTimeout(() => this.classList.remove('btn--strike'), 280);
-    });
-  });
-});
-
-function typewriter(el, text, speed, onDone) {
-  const cursor = document.createElement('span');
-  cursor.className = 'tw-cursor';
-  el.appendChild(cursor);
-  let i = 0;
-  const t = setInterval(() => {
-    if (i < text.length) {
-      cursor.before(text.charAt(i++));
-    } else {
-      clearInterval(t);
-      onDone?.();
-      setTimeout(() => cursor.classList.add('tw-cursor--done'), 1100);
+  document.querySelectorAll('[data-reveal]').forEach(el => {
+    // Hero elements are handled by revealHero(); skip if already visible
+    if (!el.classList.contains('visible')) {
+      io.observe(el);
     }
-  }, speed);
+  });
 }
+
+/* ================================================================
+   HEADER — shadow on scroll
+   ================================================================ */
+(function () {
+  const header = document.getElementById('header');
+  if (!header) return;
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      header.classList.toggle('scrolled', window.scrollY > 16);
+      ticking = false;
+    });
+  }, { passive: true });
+})();
+
+/* ================================================================
+   MOBILE MENU
+   ================================================================ */
+(function () {
+  const burger = document.getElementById('burger');
+  const menu   = document.getElementById('mobileMenu');
+  if (!burger || !menu) return;
+
+  function openMenu()  {
+    burger.setAttribute('aria-expanded', 'true');
+    menu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    burger.setAttribute('aria-expanded', 'false');
+    menu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  burger.addEventListener('click', () => {
+    burger.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+  });
+
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Close on outside click
+  document.addEventListener('click', e => {
+    if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== burger) {
+      closeMenu();
+    }
+  });
+})();
+
+/* ================================================================
+   ACCORDION — practice (mobile) + FAQ
+   ================================================================ */
+function setupAccordions() {
+  document.querySelectorAll('.acc-trigger, .faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', function () {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      const body = this.nextElementSibling;
+
+      // Close other items in the same group
+      const group = this.closest('.practice-accordion, .faq-list');
+      if (group) {
+        group.querySelectorAll('[aria-expanded="true"]').forEach(other => {
+          if (other !== this) {
+            other.setAttribute('aria-expanded', 'false');
+            other.nextElementSibling.style.maxHeight = null;
+          }
+        });
+      }
+
+      this.setAttribute('aria-expanded', String(!expanded));
+      body.style.maxHeight = expanded ? null : body.scrollHeight + 'px';
+    });
+  });
+}
+
+/* ================================================================
+   INIT
+   ================================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  setupAccordions();
+  setupReveal();
+
+  // If intro was removed (no-JS noscript or reduced-motion), reveal hero now
+  if (!document.getElementById('intro')) {
+    revealHero();
+  }
+});

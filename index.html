@@ -3,260 +3,415 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FIAT JUSTITIA — Воронов Илья Алексеевич, юрист в сфере медицины</title>
+  <title>Илья Воронов — юрист по медицинскому праву | FIAT JUSTITIA</title>
+  <meta name="description" content="Воронов Илья Алексеевич — юрист, специализирующийся на защите врачей, частных клиник и медицинских организаций в судебных спорах, при претензиях пациентов и проверках надзорных органов." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#081426" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Илья Воронов — юрист по медицинскому праву" />
+  <meta property="og:description" content="Защита врачей и клиник в сложных медицинских спорах. Судебные дела, претензии пациентов, сопровождение проверок." />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:image" content="logo.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23173A68'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia%2Cserif' font-size='13' fill='%23B49A67'%3EFJ%3C/text%3E%3C/svg%3E" />
+
+  <!-- Preload coat of arms -->
+  <link rel="preload" as="image" href="logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Prata&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "name": "Воронов Илья Алексеевич",
+        "jobTitle": "Юрист по медицинскому праву",
+        "telephone": "+79191133039",
+        "email": "fiat-justitia13@mail.ru",
+        "sameAs": ["https://t.me/Fiat_Justitia13"],
+        "worksFor": { "@type": "LegalService", "name": "FIAT JUSTITIA" }
+      },
+      {
+        "@type": "LegalService",
+        "name": "FIAT JUSTITIA",
+        "description": "Юридическая практика в сфере медицинского права. Защита врачей, клиник и медицинских организаций.",
+        "telephone": "+79191133039",
+        "email": "fiat-justitia13@mail.ru",
+        "areaServed": "RU"
+      }
+    ]
+  }
+  </script>
+
   <noscript><style>
-    .court-intro{display:none!important}
-    .hero__sub,.hero .btn,.reveal{opacity:1!important;transform:none!important}
+    .intro { display: none !important; }
+    [data-reveal] { opacity: 1 !important; transform: none !important; }
   </style></noscript>
 </head>
 <body>
 
-  <!-- Экран-заставка -->
-  <div class="court-intro" id="courtIntro">
-    <div class="court-intro__inner">
-      <img class="court-intro__logo" src="logo.png" alt="Герб" />
-    </div>
+  <!-- Intro overlay -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <img class="intro__logo" src="logo.png" alt="" width="200" height="200" />
+    <p class="intro__hint">Нажмите, чтобы продолжить</p>
   </div>
 
-  <!-- Навигация -->
-  <header class="nav">
-    <div class="nav__inner">
-      <span class="nav__brand">⚖️&nbsp; FIAT JUSTITIA</span>
-      <ul class="nav__links">
-        <li><a href="#who">Кому помогаю</a></li>
-        <li><a href="#services">Услуги</a></li>
-        <li><a href="#process">Как строится работа</a></li>
-        <li><a href="#why">Почему со мной</a></li>
-        <li><a href="#contacts">Контакты</a></li>
-      </ul>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="brand" aria-label="FIAT JUSTITIA — главная страница">
+        <span class="brand__fj" aria-hidden="true">FJ</span>
+        <span class="brand__name">FIAT JUSTITIA</span>
+      </a>
+      <nav class="nav" aria-label="Основная навигация">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#practice">Услуги</a></li>
+          <li><a class="nav__link" href="#about">Обо мне</a></li>
+          <li><a class="nav__link" href="#process">Как я работаю</a></li>
+          <li><a class="nav__link" href="#faq">Вопросы</a></li>
+          <li><a class="nav__link" href="#contacts">Контакты</a></li>
+        </ul>
+        <a href="#contacts" class="btn btn--outline">Обсудить ситуацию</a>
+      </nav>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Открыть меню навигации">
+        <svg class="burger__icon burger__icon--open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg class="burger__icon burger__icon--close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <nav aria-label="Мобильная навигация">
+        <ul class="mobile-menu__list">
+          <li><a class="mobile-menu__link" href="#practice">Услуги</a></li>
+          <li><a class="mobile-menu__link" href="#about">Обо мне</a></li>
+          <li><a class="mobile-menu__link" href="#process">Как я работаю</a></li>
+          <li><a class="mobile-menu__link" href="#faq">Вопросы</a></li>
+          <li><a class="mobile-menu__link" href="#contacts">Контакты</a></li>
+        </ul>
+        <a href="#contacts" class="btn btn--primary mobile-menu__cta">Обсудить ситуацию</a>
+      </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <p class="hero__eyebrow">FIAT JUSTITIA &nbsp;·&nbsp; Воронов Илья Алексеевич &nbsp;·&nbsp; Основатель и именной партнёр</p>
-    <h1 data-text="Защита врачей и клиник в спорах с пациентами и контролирующими органами">Защита врачей и клиник в спорах с пациентами и контролирующими органами</h1>
-    <p class="hero__sub">
-      Помогаю медицинским работникам и организациям выстраивать правовую позицию,
-      отвечать на претензии и сопровождать проверки.
-    </p>
-    <a href="#contacts" class="btn btn--primary">Получить консультацию</a>
-  </section>
+  <main>
 
-  <!-- Кому помогаю -->
-  <section class="section section--alt" id="who">
-    <div class="section__inner">
-      <p class="section__label">Клиенты</p>
-      <h2 class="section__title">Кому я помогаю</h2>
-      <p class="section__desc">Работаю исключительно на стороне медицинского сообщества — врачей, клиник и медицинских организаций.</p>
-      <div class="grid-3">
-
-        <div class="card card--who reveal">
-          <div class="card__icon">⚕️</div>
-          <div class="card__title">Врачи и медицинские работники</div>
-          <div class="card__text">Защита при претензиях и исках пациентов, сопровождение при проверках и дисциплинарных разбирательствах.</div>
+    <!-- Hero -->
+    <section class="hero" id="hero" aria-labelledby="heroHeading">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="eyebrow" data-reveal>FIAT JUSTITIA&thinsp;&bull;&thinsp;МЕДИЦИНСКОЕ ПРАВО</p>
+          <h1 class="hero__name" id="heroHeading" data-reveal data-delay="1">Илья Воронов</h1>
+          <p class="hero__role" data-reveal data-delay="2">Юрист по медицинскому праву</p>
+          <p class="hero__tagline" data-reveal data-delay="3">Защищаю врачей и клиники<br>в сложных медицинских спорах</p>
+          <p class="hero__desc" data-reveal data-delay="4">От первой претензии и проверки до медицинской экспертизы и судебного решения.</p>
+          <div class="hero__cta" data-reveal data-delay="5">
+            <a href="#contacts" class="btn btn--primary">Обсудить ситуацию</a>
+            <a href="https://t.me/Fiat_Justitia13" class="btn btn--secondary" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Написать в Telegram
+            </a>
+          </div>
+          <p class="hero__credentials" data-reveal data-delay="6">
+            Более 10&nbsp;лет юридической практики&thinsp;&bull;&thinsp;магистр права&thinsp;&bull;&thinsp;опыт работы в Следственном комитете
+          </p>
         </div>
-
-        <div class="card card--who reveal">
-          <div class="card__icon">🏥</div>
-          <div class="card__title">Частные клиники</div>
-          <div class="card__text">Правовое сопровождение в спорах о качестве услуг, взаимодействие с надзорными органами и защита в суде.</div>
+        <div class="hero__photo" data-reveal data-delay="2" aria-hidden="true">
+          <div class="photo-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Фотография<br>Ильи Воронова</span>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="card card--who reveal">
-          <div class="card__icon">🔬</div>
-          <div class="card__title">Медцентры и лаборатории</div>
-          <div class="card__text">Анализ рисков, подготовка позиции при проверках Роспотребнадзора, прокуратуры и других ведомств.</div>
+    <!-- Trust bar -->
+    <div class="trust-bar" aria-label="Профессиональный опыт">
+      <div class="trust-bar__scroll">
+        <div class="trust-item">
+          <span class="trust-item__label">Специализация</span>
+          <span class="trust-item__value">Медицинское право</span>
         </div>
-
+        <span class="trust-divider" aria-hidden="true"></span>
+        <div class="trust-item">
+          <span class="trust-item__label">Практика</span>
+          <span class="trust-item__value">Более 10 лет</span>
+        </div>
+        <span class="trust-divider" aria-hidden="true"></span>
+        <div class="trust-item">
+          <span class="trust-item__label">Образование</span>
+          <span class="trust-item__value">Магистр права</span>
+        </div>
+        <span class="trust-divider" aria-hidden="true"></span>
+        <div class="trust-item">
+          <span class="trust-item__label">Формат</span>
+          <span class="trust-item__value">Удалённо по всей России</span>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- Услуги -->
-  <section class="section" id="services">
-    <div class="section__inner">
-      <p class="section__label">Направления работы</p>
-      <h2 class="section__title">Чем я занимаюсь</h2>
-      <p class="section__desc">Специализируюсь на медицинском праве — веду дела, в которых важно понимать не только закон, но и специфику отрасли.</p>
-      <div class="services-grid">
-
-        <div class="service-card reveal">
-          <span class="service-card__dot"></span>
-          <div>
-            <div class="service-card__title">Защита клиники в суде</div>
-            <div class="service-card__text">Представление интересов в судах по искам о защите прав потребителей, возмещении вреда здоровью, компенсации морального ущерба.</div>
+    <!-- Who -->
+    <section class="section section--white" id="who" aria-labelledby="whoHeading">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-label">Клиенты</p>
+          <h2 class="section-title" id="whoHeading">Кому я помогаю</h2>
+          <p class="section-desc">Работаю исключительно на стороне медицинского сообщества — врачей, клиник и медицинских организаций.</p>
+        </header>
+        <div class="who-grid">
+          <div class="who-item" data-reveal>
+            <div class="who-item__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="who-item__title">Врачи и медицинские работники</h3>
+            <p class="who-item__text">Защита при претензиях и исках пациентов, сопровождение при проверках и дисциплинарных разбирательствах.</p>
+          </div>
+          <div class="who-item" data-reveal data-delay="1">
+            <div class="who-item__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+            </div>
+            <h3 class="who-item__title">Частные клиники</h3>
+            <p class="who-item__text">Правовое сопровождение в спорах о качестве услуг, взаимодействие с надзорными органами, защита в суде.</p>
+          </div>
+          <div class="who-item" data-reveal data-delay="2">
+            <div class="who-item__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <h3 class="who-item__title">Медицинские центры и лаборатории</h3>
+            <p class="who-item__text">Анализ рисков, подготовка позиции при проверках Роспотребнадзора, прокуратуры и других ведомств.</p>
           </div>
         </div>
-
-        <div class="service-card reveal">
-          <span class="service-card__dot"></span>
-          <div>
-            <div class="service-card__title">Ответы на претензии пациентов</div>
-            <div class="service-card__text">Подготовка юридически выверенных ответов на досудебные претензии с анализом рисков и стратегии урегулирования.</div>
-          </div>
-        </div>
-
-        <div class="service-card reveal">
-          <span class="service-card__dot"></span>
-          <div>
-            <div class="service-card__title">Споры о качестве медицинских услуг</div>
-            <div class="service-card__text">Оценка обоснованности требований, формирование правовой позиции, работа с доказательной базой.</div>
-          </div>
-        </div>
-
-        <div class="service-card reveal">
-          <span class="service-card__dot"></span>
-          <div>
-            <div class="service-card__title">Сопровождение проверок</div>
-            <div class="service-card__text">Подготовка к проверкам Роспотребнадзора, прокуратуры и других контролирующих органов, юридическое сопровождение на всех этапах.</div>
-          </div>
-        </div>
-
-        <div class="service-card reveal">
-          <span class="service-card__dot"></span>
-          <div>
-            <div class="service-card__title">Анализ медицинской документации</div>
-            <div class="service-card__text">Правовая оценка историй болезни, договоров, информированных согласий и иных документов с точки зрения рисков.</div>
-          </div>
-        </div>
-
-        <div class="service-card reveal">
-          <span class="service-card__dot"></span>
-          <div>
-            <div class="service-card__title">Подготовка правовой позиции</div>
-            <div class="service-card__text">Разработка аргументированной позиции для досудебного урегулирования или судебного процесса с учётом практики в медицинских спорах.</div>
-          </div>
-        </div>
-
-        <div class="service-card reveal">
-          <span class="service-card__dot"></span>
-          <div>
-            <div class="service-card__title">Работа с экспертизой</div>
-            <div class="service-card__text">Оценка заключений судебно-медицинских экспертов, подготовка вопросов для экспертизы, взаимодействие с экспертными учреждениями.</div>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Как строится работа -->
-  <section class="section section--alt" id="process">
-    <div class="section__inner">
-      <p class="section__label">Процесс</p>
-      <h2 class="section__title">Как строится работа</h2>
-      <p class="section__desc">Чётко и без лишних шагов — от первого обращения до результата.</p>
-      <div class="steps">
+    <!-- Practice -->
+    <section class="section" id="practice" aria-labelledby="practiceHeading">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-label">Направления</p>
+          <h2 class="section-title" id="practiceHeading">Практика</h2>
+          <p class="section-desc">Специализируюсь на медицинском праве — понимаю не только закон, но и специфику отрасли изнутри.</p>
+        </header>
 
-        <div class="step reveal">
-          <div class="step__num">1</div>
-          <div class="step__body">
-            <div class="step__title">Консультация</div>
-            <div class="step__text">Разбираем ситуацию, определяем суть требований и ключевые риски.</div>
-          </div>
+        <!-- Desktop: 3 columns -->
+        <div class="practice-grid">
+          <article class="practice-item" data-reveal>
+            <span class="practice-item__num" aria-hidden="true">01</span>
+            <h3 class="practice-item__title">Судебные споры</h3>
+            <p class="practice-item__text">Защита по искам пациентов, споры о качестве медицинской помощи, возмещении вреда здоровью и компенсации морального вреда.</p>
+          </article>
+          <article class="practice-item" data-reveal data-delay="1">
+            <span class="practice-item__num" aria-hidden="true">02</span>
+            <h3 class="practice-item__title">Претензии и проверки</h3>
+            <p class="practice-item__text">Подготовка ответов пациентам, сопровождение проверок Росздравнадзора, Роспотребнадзора, прокуратуры и иных органов.</p>
+          </article>
+          <article class="practice-item" data-reveal data-delay="2">
+            <span class="practice-item__num" aria-hidden="true">03</span>
+            <h3 class="practice-item__title">Документация и экспертиза</h3>
+            <p class="practice-item__text">Анализ медицинских документов, договоров и информированных согласий, работа с судебно-медицинскими экспертизами, подготовка вопросов и возражений.</p>
+          </article>
         </div>
 
-        <div class="step reveal">
-          <div class="step__num">2</div>
-          <div class="step__body">
-            <div class="step__title">Анализ документов</div>
-            <div class="step__text">Изучаю медицинскую документацию, договоры и материалы дела.</div>
+        <!-- Mobile: accordion -->
+        <div class="practice-accordion" id="practiceAccordion">
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false">
+              <span class="acc-num" aria-hidden="true">01</span>
+              <span class="acc-title">Судебные споры</span>
+              <svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="acc-body"><p>Защита по искам пациентов, споры о качестве медицинской помощи, возмещении вреда здоровью и компенсации морального вреда.</p></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false">
+              <span class="acc-num" aria-hidden="true">02</span>
+              <span class="acc-title">Претензии и проверки</span>
+              <svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="acc-body"><p>Подготовка ответов пациентам, сопровождение проверок Росздравнадзора, Роспотребнадзора, прокуратуры и иных органов.</p></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false">
+              <span class="acc-num" aria-hidden="true">03</span>
+              <span class="acc-title">Документация и экспертиза</span>
+              <svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="acc-body"><p>Анализ медицинских документов, договоров и информированных согласий, работа с судебно-медицинскими экспертизами, подготовка вопросов и возражений.</p></div>
           </div>
         </div>
-
-        <div class="step reveal">
-          <div class="step__num">3</div>
-          <div class="step__body">
-            <div class="step__title">Правовая позиция</div>
-            <div class="step__text">Формирую аргументированную стратегию защиты, согласовываю её с вами.</div>
-          </div>
-        </div>
-
-        <div class="step reveal">
-          <div class="step__num">4</div>
-          <div class="step__body">
-            <div class="step__title">Сопровождение</div>
-            <div class="step__text">Веду переписку, представляю интересы в суде или при проверке до завершения дела.</div>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Почему со мной удобно -->
-  <section class="section" id="why">
-    <div class="section__inner">
-      <p class="section__label">Преимущества</p>
-      <h2 class="section__title">Почему со мной удобно</h2>
-      <p class="section__desc">Без лишних обещаний — только то, что действительно отличает работу с профессионалом.</p>
-      <div class="why-grid">
-
-        <div class="why-card reveal">
-          <div class="why-card__mark">01</div>
-          <div>
-            <div class="why-card__title">Узкая специализация</div>
-            <div class="why-card__text">Работаю только в сфере медицинского права — понимаю отраслевую специфику, документооборот и логику споров изнутри.</div>
+    <!-- About -->
+    <section class="section section--white" id="about" aria-labelledby="aboutHeading">
+      <div class="container about__inner">
+        <div class="about__photo" data-reveal aria-hidden="true">
+          <div class="photo-placeholder photo-placeholder--tall">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Фотография<br>Ильи Воронова</span>
           </div>
         </div>
-
-        <div class="why-card reveal">
-          <div class="why-card__mark">02</div>
-          <div>
-            <div class="why-card__title">Прозрачная позиция</div>
-            <div class="why-card__text">Честно оцениваю перспективы дела на старте. Не берусь за заведомо бесперспективные ситуации и не обещаю гарантированного результата.</div>
+        <div class="about__content" data-reveal data-delay="1">
+          <p class="section-label">Обо мне</p>
+          <h2 class="section-title" id="aboutHeading">Илья Воронов</h2>
+          <p class="about__role">Основатель и именной партнёр FIAT JUSTITIA</p>
+          <div class="about__text">
+            <p>Медицинское право занимает особое место среди юридических специализаций: здесь правовая аргументация неотделима от понимания клинических стандартов, медицинской документации и того, как устроена отрасль изнутри.</p>
+            <p>Я работаю исключительно на стороне медицинского сообщества. Это означает полное погружение в специфику: от порядка ведения медицинских карт и структуры информированных согласий до логики судебно-медицинских экспертиз и стандартов оказания медицинской помощи.</p>
+            <p>До юридической практики работал в Следственном комитете. Этот опыт даёт понимание того, как строится расследование сложных дел и каков процессуальный подход с противоположной стороны.</p>
+            <p>Веду дела от первой претензии или уведомления о проверке до окончательного решения суда или контролирующего органа. Работаю удалённо с клиентами из любого региона России.</p>
           </div>
         </div>
-
-        <div class="why-card reveal">
-          <div class="why-card__mark">03</div>
-          <div>
-            <div class="why-card__title">Полное сопровождение</div>
-            <div class="why-card__text">Веду дело от первой консультации до финального решения — вы не остаётесь один на один с процессом.</div>
-          </div>
-        </div>
-
-        <div class="why-card reveal">
-          <div class="why-card__mark">04</div>
-          <div>
-            <div class="why-card__title">Удалённая работа</div>
-            <div class="why-card__text">Работаю с клиниками и врачами из любого региона. Документы и коммуникация — онлайн, без лишних встреч.</div>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Контакты -->
-  <section class="section section--alt" id="contacts">
-    <div class="section__inner">
-      <p class="section__label">Контакты</p>
-      <h2 class="section__title">Связаться со мной</h2>
-      <p class="section__desc">Напишите или позвоните — расскажите о ситуации, и я скажу, чем смогу помочь.</p>
-      <ul class="contacts-list">
-        <li class="reveal">
-          <span class="contacts-list__label">Телефон</span>
-          <span class="contacts-list__val"><a href="tel:+79191133039">+7 919 11 33 039</a></span>
-        </li>
-        <li class="reveal">
-          <span class="contacts-list__label">Telegram</span>
-          <span class="contacts-list__val"><a href="https://t.me/Fiat_Justitia13">@Fiat_Justitia13</a></span>
-        </li>
-        <li class="reveal">
-          <span class="contacts-list__label">E-mail</span>
-          <span class="contacts-list__val"><a href="mailto:fiat-justitia13@mail.ru">fiat-justitia13@mail.ru</a></span>
-        </li>
-      </ul>
-    </div>
-  </section>
+    <!-- Process -->
+    <section class="section" id="process" aria-labelledby="processHeading">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-label">Процесс</p>
+          <h2 class="section-title" id="processHeading">Как строится работа</h2>
+          <p class="section-desc">Чётко и без лишних шагов — от первого обращения до результата.</p>
+        </header>
+        <ol class="process-list" aria-label="Этапы работы">
+          <li class="process-step" data-reveal>
+            <div class="process-step__marker">
+              <span class="process-step__num" aria-hidden="true">1</span>
+              <span class="process-step__line" aria-hidden="true"></span>
+            </div>
+            <div class="process-step__content">
+              <h3 class="process-step__title">Первичная оценка</h3>
+              <p class="process-step__text">Анализируем ситуацию, определяем существо требований и ключевые правовые риски. Вы получаете честную оценку перспектив — без преувеличений.</p>
+            </div>
+          </li>
+          <li class="process-step" data-reveal data-delay="1">
+            <div class="process-step__marker">
+              <span class="process-step__num" aria-hidden="true">2</span>
+              <span class="process-step__line" aria-hidden="true"></span>
+            </div>
+            <div class="process-step__content">
+              <h3 class="process-step__title">Анализ документов</h3>
+              <p class="process-step__text">Изучаю медицинскую документацию, договоры и материалы дела. Выявляю сильные и слабые стороны позиции.</p>
+            </div>
+          </li>
+          <li class="process-step" data-reveal data-delay="2">
+            <div class="process-step__marker">
+              <span class="process-step__num" aria-hidden="true">3</span>
+              <span class="process-step__line" aria-hidden="true"></span>
+            </div>
+            <div class="process-step__content">
+              <h3 class="process-step__title">Формирование позиции</h3>
+              <p class="process-step__text">Разрабатываю аргументированную стратегию защиты, обсуждаем её вместе и согласовываем дальнейшие шаги.</p>
+            </div>
+          </li>
+          <li class="process-step" data-reveal data-delay="3">
+            <div class="process-step__marker">
+              <span class="process-step__num" aria-hidden="true">4</span>
+            </div>
+            <div class="process-step__content">
+              <h3 class="process-step__title">Сопровождение до результата</h3>
+              <p class="process-step__text">Веду переписку, представляю ваши интересы в суде или при проверке до получения окончательного решения.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--white" id="faq" aria-labelledby="faqHeading">
+      <div class="container">
+        <header class="section-header section-header--narrow">
+          <p class="section-label">Вопросы</p>
+          <h2 class="section-title" id="faqHeading">Часто спрашивают</h2>
+        </header>
+        <div class="faq-list">
+          <div class="faq-item" data-reveal>
+            <button class="faq-trigger" aria-expanded="false">
+              <span>Работаете ли вы с клиентами из других регионов?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-body"><p>Да, работаю дистанционно с клиниками и врачами из любого региона России. Документы передаются в электронном виде, консультации проходят в удобном для вас формате.</p></div>
+          </div>
+          <div class="faq-item" data-reveal>
+            <button class="faq-trigger" aria-expanded="false">
+              <span>Какие документы нужны для первичной оценки?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-body"><p>Для первоначальной оценки достаточно кратко описать ситуацию и приложить имеющиеся документы: претензию, исковое заявление или уведомление о проверке. Медицинскую документацию изучу в ходе работы.</p></div>
+          </div>
+          <div class="faq-item" data-reveal>
+            <button class="faq-trigger" aria-expanded="false">
+              <span>Можно ли обратиться до получения претензии или иска?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-body"><p>Да, и это лучший момент для обращения. Ранняя оценка рисков позволяет выработать стратегию до начала формального разбирательства и нередко помогает избежать его.</p></div>
+          </div>
+          <div class="faq-item" data-reveal>
+            <button class="faq-trigger" aria-expanded="false">
+              <span>Как определяется стоимость работы?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-body"><p>Стоимость зависит от сложности ситуации, объёма документов и характера задач. После первичной оценки я сообщу конкретные условия сотрудничества.</p></div>
+          </div>
+          <div class="faq-item" data-reveal>
+            <button class="faq-trigger" aria-expanded="false">
+              <span>Можно ли гарантировать результат дела?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-body"><p>Нет. Результат судебного или административного разбирательства гарантировать невозможно — он зависит от многих факторов, в том числе от доказательной базы и позиции суда. До начала работы вы получите честную оценку перспектив и рисков: без преувеличений и ложных обещаний.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacts -->
+    <section class="contacts" id="contacts" aria-labelledby="contactsHeading">
+      <div class="container contacts__inner">
+        <h2 class="contacts__title" id="contactsHeading">Обсудим вашу ситуацию</h2>
+        <p class="contacts__desc">Кратко опишите проблему и приложите имеющиеся документы. Я изучу исходные данные и сообщу, в каком формате смогу помочь.</p>
+        <div class="contacts__cta">
+          <a href="https://t.me/Fiat_Justitia13" class="btn btn--gold" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Написать в Telegram
+          </a>
+        </div>
+        <div class="contacts__info">
+          <a href="tel:+79191133039" class="contact-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.29 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 5.55 5.55l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +7&nbsp;919&nbsp;11&nbsp;33&nbsp;039
+          </a>
+          <span class="contacts__sep" aria-hidden="true"></span>
+          <a href="mailto:fiat-justitia13@mail.ru" class="contact-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            fiat-justitia13@mail.ru
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <!-- Footer -->
-  <footer>
-    <p><strong>FIAT JUSTITIA</strong> &nbsp;·&nbsp; Воронов Илья Алексеевич — юрист в сфере медицины</p>
-    <p style="margin-top:6px;">© 2026 &nbsp;·&nbsp; Информация на сайте не является офертой и не гарантирует конкретного результата по делу.</p>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand__fj brand__fj--sm" aria-hidden="true">FJ</span>
+        <div>
+          <p class="footer__title">FIAT JUSTITIA</p>
+          <p class="footer__sub">Воронов Илья Алексеевич — юрист по медицинскому праву</p>
+        </div>
+      </div>
+      <p class="footer__copy">© 2026 &nbsp;&middot;&nbsp; Информация на сайте не является офертой и не гарантирует конкретного результата по делу.</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>
