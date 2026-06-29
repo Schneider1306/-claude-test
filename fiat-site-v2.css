@@ -951,8 +951,8 @@ section {
   .practice-accordion .section-header,
   #practice .section-header { margin-bottom: 28px; }
 
-  /* Back to top: hidden on mobile */
-  .back-to-top { display: none; }
+  /* Back to top: visible on mobile, safe area aware */
+  .back-to-top { display: flex; }
 
   /* About expand */
   .about__extra { display: none; }
