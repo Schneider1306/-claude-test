@@ -578,9 +578,29 @@ section {
    ABOUT
    ================================================================ */
 .about__inner {
-  display: block;
-  max-width: 720px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 64px;
+  align-items: start;
 }
+
+/* About photo card */
+.about__photo-card {
+  background: #0B1526;
+  border-radius: 18px;
+  border: 1px solid rgba(185, 160, 103, 0.30);
+  box-shadow: 0 8px 48px rgba(8, 20, 38, 0.16), 0 2px 12px rgba(8, 20, 38, 0.08);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.about__photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+}
+.about__photo-card--mobile { display: none; }
 .about__role {
   font-size: 0.82rem;
   color: var(--muted);
@@ -897,7 +917,16 @@ section {
   }
 
   .about__inner {
-    max-width: 100%;
+    display: block;
+  }
+  .about__photo-card--desktop { display: none; }
+  .about__photo-card--mobile {
+    display: block;
+    margin: 20px 0 24px;
+  }
+  .about__photo-card--mobile .about__photo {
+    aspect-ratio: 3 / 4;
+    max-height: 420px;
   }
 }
 
