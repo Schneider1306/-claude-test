@@ -887,11 +887,12 @@ section {
   .hero__photo-card--desktop { display: none; }
   .hero__photo-card--mobile {
     display: block;
-    border-radius: 18px;
-    margin: 28px 0;
+    border-radius: 22px;
+    margin: 20px 0;
   }
   .hero__photo {
-    max-height: none;
+    aspect-ratio: 3 / 4;
+    max-height: 460px;
     border-radius: 0;
   }
 
@@ -947,6 +948,11 @@ section {
   /* Practice */
   .practice-grid { display: none; }
   .practice-accordion { display: block; }
+  .practice-accordion .section-header,
+  #practice .section-header { margin-bottom: 28px; }
+
+  /* Back to top: hidden on mobile */
+  .back-to-top { display: none; }
 
   /* About expand */
   .about__extra { display: none; }
