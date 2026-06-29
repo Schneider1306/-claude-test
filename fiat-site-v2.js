@@ -19,9 +19,10 @@
   let done = false;
 
   function unlock() {
+    // Reset scroll while still hidden, then remove overflow so no visible jump
+    window.scrollTo({ top: 0, behavior: 'instant' });
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
-    window.scrollTo(0, 0);
     intro.remove();
     revealHero();
   }
