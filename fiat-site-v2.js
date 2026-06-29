@@ -14,15 +14,14 @@
 
   document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
-  history.scrollRestoration = 'manual';
+  // history.scrollRestoration is already set to 'manual' via inline script in <head>
 
   let done = false;
 
   function unlock() {
-    // Reset scroll while still hidden, then remove overflow so no visible jump
-    window.scrollTo({ top: 0, behavior: 'instant' });
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
+    // Page is already at scrollY=0 — the inline head script set it before restore fired
     intro.remove();
     revealHero();
   }
