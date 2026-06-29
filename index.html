@@ -22,13 +22,15 @@
   <link rel="preload" as="image" href="logo.webp?v=6" />
   <!-- Preload hero portrait -->
   <link rel="preload" as="image" href="portrait-main.jpg?v=1" />
+  <!-- Preload about portrait -->
+  <link rel="preload" as="image" href="portrait-about.jpg?v=1" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Prata&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="./fiat-site-v2.css?v=13" />
+  <link rel="stylesheet" href="./fiat-site-v2.css?v=14" />
 
   <!-- Schema.org -->
   <script type="application/ld+json">
@@ -273,6 +275,10 @@
           <p class="section-label">Обо мне</p>
           <h2 class="section-title" id="aboutHeading">Илья Воронов</h2>
           <p class="about__role">Юрист. Эксперт в медицинском праве.</p>
+          <!-- Mobile photo: after name/role, before text -->
+          <div class="about__photo-card about__photo-card--mobile">
+            <img class="about__photo" src="portrait-about.jpg?v=1" alt="Илья Воронов — юрист, эксперт в медицинском праве" />
+          </div>
           <div class="about__text">
             <p>Более 10 лет занимаюсь юридической практикой. Я магистр юриспруденции и дипломированный специалист в области антикризисного управления и медицинского права.</p>
             <p>Основное направление моей работы — защита врачей, частных клиник и медицинских организаций. Я работаю исключительно на стороне медицинского сообщества: представляю интересы в спорах с пациентами, при проверках контролирующих органов, проведении экспертиз и в суде.</p>
@@ -286,6 +292,10 @@
             <span>Подробнее</span>
             <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
+        </div>
+        <!-- Desktop photo: right column -->
+        <div class="about__photo-card about__photo-card--desktop" data-reveal>
+          <img class="about__photo" src="portrait-about.jpg?v=1" alt="Илья Воронов — юрист, эксперт в медицинском праве" />
         </div>
       </div>
     </section>
