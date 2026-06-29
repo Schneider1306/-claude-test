@@ -12,9 +12,10 @@
     return;
   }
 
+  // Scroll to top BEFORE locking overflow — iOS Safari ignores scrollTo after overflow:hidden
+  window.scrollTo(0, 0);
   document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
-  // history.scrollRestoration is already set to 'manual' via inline script in <head>
 
   let done = false;
 

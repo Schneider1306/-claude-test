@@ -60,8 +60,13 @@
     .intro { display: none !important; }
     [data-reveal] { opacity: 1 !important; transform: none !important; }
   </style></noscript>
-  <!-- Disable browser scroll restoration before it fires (iOS Safari fix) -->
-  <script>history.scrollRestoration = 'manual'; window.scrollTo(0, 0);</script>
+  <!-- Disable scroll restoration and clear hash before browser scrolls to anchor -->
+  <script>
+    history.scrollRestoration = 'manual';
+    if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  </script>
 </head>
 <body>
 
@@ -429,6 +434,6 @@
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <script src="./fiat-site-v2.js?v=8" defer></script>
+  <script src="./fiat-site-v2.js?v=9" defer></script>
 </body>
 </html>
