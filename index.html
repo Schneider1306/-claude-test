@@ -20,13 +20,15 @@
 
   <!-- Preload coat of arms -->
   <link rel="preload" as="image" href="logo.webp?v=6" />
+  <!-- Preload hero portrait -->
+  <link rel="preload" as="image" href="portrait-main.jpg?v=1" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Prata&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="./fiat-site-v2.css?v=10" />
+  <link rel="stylesheet" href="./fiat-site-v2.css?v=11" />
 
   <!-- Schema.org -->
   <script type="application/ld+json">
@@ -112,6 +114,12 @@
           <p class="eyebrow" data-reveal>FIAT JUSTITIA&thinsp;&bull;&thinsp;МЕДИЦИНСКОЕ ПРАВО</p>
           <h1 class="hero__name" id="heroHeading" data-reveal data-delay="1">Илья Воронов</h1>
           <p class="hero__role" data-reveal data-delay="2">Юрист по медицинскому праву</p>
+
+          <!-- Mobile photo: after role, before tagline -->
+          <div class="hero__photo-card hero__photo-card--mobile" data-reveal data-delay="3">
+            <img class="hero__photo" src="portrait-main.jpg?v=1" alt="Илья Воронов — юрист по медицинскому праву" />
+          </div>
+
           <p class="hero__tagline" data-reveal data-delay="3">Защищаю врачей и клиники<br>в сложных медицинских спорах</p>
           <p class="hero__desc" data-reveal data-delay="4">От первой претензии и проверки до медицинской экспертизы и судебного решения.</p>
           <div class="hero__cta" data-reveal data-delay="5">
@@ -124,6 +132,11 @@
           <p class="hero__credentials" data-reveal data-delay="6">
             Более 10&nbsp;лет юридической практики&thinsp;&bull;&thinsp;магистр юриспруденции&thinsp;&bull;&thinsp;специалист по медицинскому праву
           </p>
+        </div>
+
+        <!-- Desktop photo: right column -->
+        <div class="hero__photo-card hero__photo-card--desktop" data-reveal data-delay="2">
+          <img class="hero__photo" src="portrait-main.jpg?v=1" alt="Илья Воронов — юрист по медицинскому праву" />
         </div>
       </div>
     </section>

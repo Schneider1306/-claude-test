@@ -316,9 +316,30 @@ section {
   border-bottom: 1px solid var(--border);
 }
 .hero__inner {
-  display: block;
-  max-width: 720px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 60px;
+  align-items: start;
 }
+
+/* Hero photo card */
+.hero__photo-card {
+  background: #0B1526;
+  border-radius: 22px;
+  border: 1px solid rgba(185, 160, 103, 0.35);
+  box-shadow: 0 8px 48px rgba(8, 20, 38, 0.18), 0 2px 12px rgba(8, 20, 38, 0.1);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.hero__photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 620px;
+  object-fit: cover;
+  object-position: center top;
+}
+.hero__photo-card--mobile { display: none; }
 .eyebrow {
   display: block;
   font-size: 0.68rem;
@@ -860,7 +881,18 @@ section {
   .mobile-menu { display: block; }
 
   .hero__inner {
+    display: block;
     max-width: 100%;
+  }
+  .hero__photo-card--desktop { display: none; }
+  .hero__photo-card--mobile {
+    display: block;
+    border-radius: 18px;
+    margin: 28px 0;
+  }
+  .hero__photo {
+    max-height: none;
+    border-radius: 0;
   }
 
   .about__inner {
