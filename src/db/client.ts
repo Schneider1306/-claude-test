@@ -4,7 +4,11 @@ import Database from "better-sqlite3";
 import { drizzle } from "drizzle-orm/better-sqlite3";
 import * as schema from "./schema";
 
-const DATA_DIR = path.join(/* turbopackIgnore: true */ process.cwd(), "data");
+// DATA_DIR можно переопределить переменной окружения — используется при
+// облачном развёртывании, где база должна лежать на смонтированном томе
+// (например, /app/data на Fly.io), а не рядом с кодом приложения.
+const DATA_DIR =
+  process.env.DATA_DIR || path.join(/* turbopackIgnore: true */ process.cwd(), "data");
 export const DB_PATH = path.join(DATA_DIR, "legal-practice.db");
 export const BACKUPS_DIR = path.join(DATA_DIR, "backups");
 

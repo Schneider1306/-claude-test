@@ -29,6 +29,7 @@ const NAV_ITEMS = [
 
 export function Sidebar({ className }: { className?: string }) {
   const pathname = usePathname();
+  if (pathname === "/login") return null;
 
   return (
     <nav className={cn("flex flex-col gap-1", className)}>

@@ -6,7 +6,7 @@ import { services, settings } from "./schema";
 import { rublesToKopecks, hoursToMinutes } from "../domain/calculations";
 import { eq, sql } from "drizzle-orm";
 
-const DATA_DIR = path.join(process.cwd(), "data");
+const DATA_DIR = process.env.DATA_DIR || path.join(process.cwd(), "data");
 const DB_PATH = path.join(DATA_DIR, "legal-practice.db");
 
 function main() {

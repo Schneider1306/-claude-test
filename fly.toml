@@ -1,0 +1,24 @@
+# Конфигурация развёртывания на Fly.io.
+# Имя приложения (app) подставляется при первом деплое (`fly launch` /
+# `fly apps create`), т.к. должно быть глобально уникальным.
+
+app = "legal-practice-economics"  # замените на своё уникальное имя (см. DEPLOY.md)
+primary_region = "waw"            # регион можно изменить на ближайший к вам
+
+[build]
+
+[[mounts]]
+  source = "legal_practice_data"
+  destination = "/app/data"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"
