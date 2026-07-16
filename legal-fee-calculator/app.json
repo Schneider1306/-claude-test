@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Стоимость юруслуг",
+    "slug": "legal-fee-calculator",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "legalfee",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F7F5F0"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.voronov.legalfee"
+    },
+    "android": {
+      "package": "com.voronov.legalfee",
+      "adaptiveIcon": {
+        "backgroundColor": "#F7F5F0",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}
