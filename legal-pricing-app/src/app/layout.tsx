@@ -1,0 +1,42 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import { ToastProvider } from "@/components/ui/toaster";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { AppShell } from "@/components/layout/app-shell";
+
+export const metadata: Metadata = {
+  title: "Калькулятор стоимости юридических услуг",
+  description: "Личный инструмент расчёта стоимости юридических услуг",
+};
+
+const THEME_INIT_SCRIPT = `
+(function () {
+  try {
+    var stored = window.localStorage.getItem('theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var isDark = stored ? stored === 'dark' : prefersDark;
+    if (isDark) document.documentElement.classList.add('dark');
+  } catch (e) {}
+})();
+`;
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="ru" className="h-full antialiased" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
+      <body className="min-h-full flex flex-col font-sans">
+        <TooltipProvider delayDuration={200}>
+          <ToastProvider>
+            <AppShell>{children}</AppShell>
+          </ToastProvider>
+        </TooltipProvider>
+      </body>
+    </html>
+  );
+}
