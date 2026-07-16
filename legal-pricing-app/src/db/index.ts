@@ -13,8 +13,13 @@ declare global {
 }
 
 function isBenignConcurrentInitError(error: unknown): boolean {
-  const message = error instanceof Error ? error.message : String(error);
-  return /already exists/i.test(message);
+  let current: unknown = error;
+  for (let depth = 0; current && depth < 5; depth++) {
+    const message = current instanceof Error ? current.message : String(current);
+    if (/already exists/i.test(message)) return true;
+    current = current instanceof Error ? current.cause : undefined;
+  }
+  return false;
 }
 
 function initDb() {
