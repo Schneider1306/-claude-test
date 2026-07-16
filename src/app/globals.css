@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4f6fa;
+  --surface: #ffffff;
+  --surface-muted: #eef1f7;
+  --foreground: #10192b;
+  --muted-foreground: #5a6478;
+  --border: #dde3ee;
+
+  --primary: #10254e;      /* тёмно-синий */
+  --primary-foreground: #ffffff;
+  --accent: #0f9b8e;       /* бирюзовый — положительные показатели */
+  --accent-foreground: #ffffff;
+  --warning: #c8860d;      /* тёплый жёлтый — требует внимания / редактируется */
+  --warning-bg: #fdf3dd;
+  --warning-foreground: #6b4a05;
+  --danger: #c23a3a;       /* красный — долги, просрочки, убыточность */
+  --danger-bg: #fbe7e7;
+  --danger-foreground: #7a1f1f;
+  --success-bg: #e2f6f2;
+  --ring: #10254e;
+}
+
+:root[data-theme="dark"] {
+  --background: #0b1220;
+  --surface: #121c30;
+  --surface-muted: #1a2740;
+  --foreground: #eef2fb;
+  --muted-foreground: #9aa7c2;
+  --border: #253251;
+
+  --primary: #4c6fb3;
+  --primary-foreground: #f4f7ff;
+  --accent: #2bc4b3;
+  --accent-foreground: #04211d;
+  --warning: #e2b445;
+  --warning-bg: #3a2f10;
+  --warning-foreground: #f7dfa0;
+  --danger: #e46464;
+  --danger-bg: #3a1717;
+  --danger-foreground: #ffd4d4;
+  --success-bg: #0e2e29;
+  --ring: #4c6fb3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #0b1220;
+    --surface: #121c30;
+    --surface-muted: #1a2740;
+    --foreground: #eef2fb;
+    --muted-foreground: #9aa7c2;
+    --border: #253251;
+
+    --primary: #4c6fb3;
+    --primary-foreground: #f4f7ff;
+    --accent: #2bc4b3;
+    --accent-foreground: #04211d;
+    --warning: #e2b445;
+    --warning-bg: #3a2f10;
+    --warning-foreground: #f7dfa0;
+    --danger: #e46464;
+    --danger-bg: #3a1717;
+    --danger-foreground: #ffd4d4;
+    --success-bg: #0e2e29;
+    --ring: #4c6fb3;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-success-bg: var(--success-bg);
+  --color-ring: var(--ring);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff;
+  }
+}
