@@ -1,6 +1,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useMemo } from 'react';
-import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { showAlert } from '@/components/dialog';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Badge, Button, Card, EmptyState, Row, SectionTitle } from '@/components/ui';
@@ -43,7 +44,7 @@ export default function CaseDetailScreen() {
 
   function remove() {
     const hasHistory = calcs.length > 0 || pays.length > 0;
-    Alert.alert(
+    showAlert(
       'Удалить дело?',
       hasHistory
         ? 'У дела есть расчёты и платежи. Их можно сохранить, архивировав дело, либо удалить всё вместе.'

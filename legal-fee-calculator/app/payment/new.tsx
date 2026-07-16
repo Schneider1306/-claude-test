@@ -1,6 +1,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
-import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text } from 'react-native';
+import { showAlert } from '@/components/dialog';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button, ChipGroup, Field, NumberInput, Row, Card, SectionTitle } from '@/components/ui';
@@ -41,11 +42,11 @@ export default function NewPaymentScreen() {
 
   async function save() {
     if (!legalCase) {
-      Alert.alert('Ошибка', 'Дело не найдено.');
+      showAlert('Ошибка', 'Дело не найдено.');
       return;
     }
     if (amount <= 0) {
-      Alert.alert('Проверьте сумму', 'Сумма платежа должна быть больше нуля.');
+      showAlert('Проверьте сумму', 'Сумма платежа должна быть больше нуля.');
       return;
     }
     await app.addPayment({

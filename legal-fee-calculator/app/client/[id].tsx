@@ -1,6 +1,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useMemo } from 'react';
-import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { showAlert } from '@/components/dialog';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Badge, Button, Card, EmptyState, Row, SectionTitle } from '@/components/ui';
@@ -36,7 +37,7 @@ export default function ClientDetailScreen() {
   function remove() {
     const hasHistory = clientCases.length > 0 || clientCalcs.length > 0 || clientPayments.length > 0;
     if (hasHistory) {
-      Alert.alert(
+      showAlert(
         'У клиента есть история',
         'Чтобы не потерять расчёты и дела, можно архивировать клиента. Полное удаление уничтожит все связанные дела, расчёты и платежи.',
         [
@@ -46,7 +47,7 @@ export default function ClientDetailScreen() {
             text: 'Удалить всё',
             style: 'destructive',
             onPress: () =>
-              Alert.alert('Точно удалить?', 'Это действие необратимо.', [
+              showAlert('Точно удалить?', 'Это действие необратимо.', [
                 { text: 'Отмена', style: 'cancel' },
                 {
                   text: 'Удалить',
@@ -61,7 +62,7 @@ export default function ClientDetailScreen() {
         ]
       );
     } else {
-      Alert.alert('Удалить клиента?', 'Клиент будет удалён.', [
+      showAlert('Удалить клиента?', 'Клиент будет удалён.', [
         { text: 'Отмена', style: 'cancel' },
         {
           text: 'Удалить',

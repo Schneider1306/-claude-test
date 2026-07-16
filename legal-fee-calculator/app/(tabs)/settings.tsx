@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
-import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { showAlert } from '@/components/dialog';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import {
@@ -72,7 +73,7 @@ export default function SettingsScreen() {
     patch({ catalog: sorted });
   }
   function deleteCatalog(id: string) {
-    Alert.alert('Удалить услугу?', 'Позиция будет удалена из каталога. Старые расчёты не изменятся.', [
+    showAlert('Удалить услугу?', 'Позиция будет удалена из каталога. Старые расчёты не изменятся.', [
       { text: 'Отмена', style: 'cancel' },
       {
         text: 'Удалить',
@@ -95,7 +96,7 @@ export default function SettingsScreen() {
 
   // --- Сброс ---
   function resetAll() {
-    Alert.alert('Восстановить начальные значения?', 'Настройки, каталог и коэффициенты вернутся к исходным. Клиенты, дела и расчёты не изменятся.', [
+    showAlert('Восстановить начальные значения?', 'Настройки, каталог и коэффициенты вернутся к исходным. Клиенты, дела и расчёты не изменятся.', [
       { text: 'Отмена', style: 'cancel' },
       { text: 'Восстановить', style: 'destructive', onPress: () => app.resetSettings() },
     ]);
@@ -107,7 +108,7 @@ export default function SettingsScreen() {
       setBusy(true);
       await exportBackupFile(app.buildBackupData());
     } catch (e) {
-      Alert.alert('Не удалось создать копию', String((e as Error).message ?? e));
+      showAlert('Не удалось создать копию', String((e as Error).message ?? e));
     } finally {
       setBusy(false);
     }
@@ -120,12 +121,12 @@ export default function SettingsScreen() {
       if (raw == null) return; // отмена
       const check = validateBackup(raw);
       if (!check.ok) {
-        Alert.alert('Файл не подходит', check.error);
+        showAlert('Файл не подходит', check.error);
         return;
       }
       const s = check.summary;
       const data = backupToAppData(check.data);
-      Alert.alert(
+      showAlert(
         'Импорт данных',
         `В файле:\n• Клиентов: ${s.clients}\n• Дел: ${s.cases}\n• Расчётов: ${s.calculations}\n• Платежей: ${s.payments}\n\nПеред заменой будет создана автоматическая локальная копия текущих данных.`,
         [
@@ -134,21 +135,21 @@ export default function SettingsScreen() {
             text: 'Объединить',
             onPress: async () => {
               await app.importBackup(check.data, 'merge');
-              Alert.alert('Готово', 'Данные объединены.');
+              showAlert('Готово', 'Данные объединены.');
             },
           },
           {
             text: 'Заменить',
             style: 'destructive',
             onPress: () => {
-              Alert.alert('Полностью заменить?', 'Текущие данные будут заменены данными из файла.', [
+              showAlert('Полностью заменить?', 'Текущие данные будут заменены данными из файла.', [
                 { text: 'Отмена', style: 'cancel' },
                 {
                   text: 'Заменить',
                   style: 'destructive',
                   onPress: async () => {
                     await app.importBackup(check.data, 'replace');
-                    Alert.alert('Готово', 'Данные заменены.');
+                    showAlert('Готово', 'Данные заменены.');
                   },
                 },
               ]);
@@ -158,7 +159,7 @@ export default function SettingsScreen() {
       );
       void data;
     } catch (e) {
-      Alert.alert('Ошибка импорта', String((e as Error).message ?? e));
+      showAlert('Ошибка импорта', String((e as Error).message ?? e));
     } finally {
       setBusy(false);
     }

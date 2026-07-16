@@ -2,6 +2,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { DialogHost } from '@/components/dialog';
 import { colors } from '@/constants/theme';
 import { AppProvider } from '@/store/AppStore';
 
@@ -27,6 +28,7 @@ export default function RootLayout() {
           <Stack.Screen name="calculation/[id]" options={{ title: 'Расчёт' }} />
           <Stack.Screen name="payment/new" options={{ title: 'Платёж', presentation: 'modal' }} />
         </Stack>
+        <DialogHost />
       </AppProvider>
     </SafeAreaProvider>
   );

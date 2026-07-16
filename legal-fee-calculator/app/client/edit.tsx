@@ -1,6 +1,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
-import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet } from 'react-native';
+import { showAlert } from '@/components/dialog';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button, ChipGroup, Field, SectionTitle } from '@/components/ui';
@@ -24,7 +25,7 @@ export default function ClientEditScreen() {
 
   async function save() {
     if (name.trim().length === 0) {
-      Alert.alert('Проверьте данные', 'Укажите ФИО или название клиента.');
+      showAlert('Проверьте данные', 'Укажите ФИО или название клиента.');
       return;
     }
     if (existing) {

@@ -1,6 +1,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
-import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet } from 'react-native';
+import { showAlert } from '@/components/dialog';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button, ChipGroup, Field, NumberInput, SectionTitle } from '@/components/ui';
@@ -35,12 +36,12 @@ export default function CaseEditScreen() {
 
   async function save() {
     if (title.trim().length === 0) {
-      Alert.alert('Проверьте данные', 'Укажите название дела.');
+      showAlert('Проверьте данные', 'Укажите название дела.');
       return;
     }
     const targetClientId = existing?.clientId ?? clientId;
     if (!targetClientId) {
-      Alert.alert('Ошибка', 'Не указан клиент.');
+      showAlert('Ошибка', 'Не указан клиент.');
       return;
     }
     if (existing) {

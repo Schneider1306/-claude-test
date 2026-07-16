@@ -2,7 +2,6 @@ import * as Clipboard from 'expo-clipboard';
 import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 import {
-  Alert,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -11,6 +10,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import { showAlert } from '@/components/dialog';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import {
@@ -167,7 +167,7 @@ export default function NewCalcScreen() {
   function next() {
     const check = canProceed();
     if (!check.ok) {
-      Alert.alert('Проверьте данные', check.message);
+      showAlert('Проверьте данные', check.message);
       return;
     }
     setStep((s) => Math.min(STEPS.length - 1, s + 1));
@@ -218,7 +218,7 @@ export default function NewCalcScreen() {
   // --- Сохранение ---
   async function handleSave() {
     if (manualEnabled && manualReason.trim().length === 0) {
-      Alert.alert('Укажите причину', 'Для ручной цены нужно текстовое пояснение.');
+      showAlert('Укажите причину', 'Для ручной цены нужно текстовое пояснение.');
       return;
     }
     if (result.warnings.length > 0 && !manualEnabled && discount === 0) {
@@ -253,7 +253,7 @@ export default function NewCalcScreen() {
 
     await app.addCalculation({ clientId, caseId: createdCase.id, input });
 
-    Alert.alert('Готово', 'Расчёт сохранён.', [
+    showAlert('Готово', 'Расчёт сохранён.', [
       { text: 'К списку клиентов', onPress: () => router.replace('/clients') },
       { text: 'На главную', onPress: () => router.replace('/'), style: 'cancel' },
     ]);
@@ -269,7 +269,7 @@ export default function NewCalcScreen() {
       lines: lines.map((l) => ({ title: l.title, quantity: l.quantity, unit: l.unit })),
     });
     await Clipboard.setStringAsync(text);
-    Alert.alert('Скопировано', 'Текст предложения скопирован в буфер обмена.');
+    showAlert('Скопировано', 'Текст предложения скопирован в буфер обмена.');
   }
 
   function makeSchedule() {

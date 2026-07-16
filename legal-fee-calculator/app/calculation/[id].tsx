@@ -1,6 +1,7 @@
 import * as Clipboard from 'expo-clipboard';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { showAlert } from '@/components/dialog';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Badge, Button, Card, EmptyState, Row, SectionTitle, WarningBox } from '@/components/ui';
@@ -37,7 +38,7 @@ export default function CalculationDetailScreen() {
       lines: calc!.input.lines.map((l) => ({ title: l.title, quantity: l.quantity, unit: l.unit })),
     });
     await Clipboard.setStringAsync(text);
-    Alert.alert('Скопировано', 'Текст предложения скопирован в буфер обмена.');
+    showAlert('Скопировано', 'Текст предложения скопирован в буфер обмена.');
   }
 
   return (
