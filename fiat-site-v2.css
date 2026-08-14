@@ -39,6 +39,24 @@ a { color: inherit; text-decoration: none; }
 button { border: none; background: none; cursor: pointer; font: inherit; color: inherit; }
 ul, ol { list-style: none; }
 
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 10000;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--blue);
+  transform: translateY(-160%);
+}
+.skip-link:focus { transform: none; }
+
 /* ── Container ── */
 .container {
   width: 100%;
@@ -51,7 +69,7 @@ ul, ol { list-style: none; }
    INTRO
    ================================================================ */
 @keyframes introFade {
-  0%, 94.4% { opacity: 1; }
+  0%, 84% { opacity: 1; }
   100%       { opacity: 0; }
 }
 @keyframes logoRise {
@@ -69,7 +87,8 @@ ul, ol { list-style: none; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: introFade 25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  padding: 0;
+  animation: introFade 2.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 .intro::before {
   content: '';
@@ -85,7 +104,7 @@ ul, ol { list-style: none; }
   position: relative;
   width: min(360px, 88vw);
   will-change: opacity, transform;
-  animation: logoRise 1.6s cubic-bezier(0.16, 0.84, 0.44, 1) both;
+  animation: logoRise 0.9s cubic-bezier(0.16, 0.84, 0.44, 1) both;
 }
 .intro__hint {
   position: absolute;
@@ -198,11 +217,13 @@ ul, ol { list-style: none; }
   transform: translateY(-6px);
   transition: opacity 0.25s ease, transform 0.25s ease;
   pointer-events: none;
+  visibility: hidden;
 }
 .mobile-menu.open {
   opacity: 1;
   transform: none;
   pointer-events: auto;
+  visibility: visible;
 }
 .mobile-menu__list {
   display: flex;

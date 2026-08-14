@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://schneider1306.github.io/-claude-test/sitemap.xml

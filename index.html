@@ -7,13 +7,17 @@
   <meta name="description" content="Воронов Илья Алексеевич — юрист, специализирующийся на защите врачей, частных клиник и медицинских организаций в судебных спорах, при претензиях пациентов и проверках надзорных органов." />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#081426" />
+  <link rel="canonical" href="https://schneider1306.github.io/-claude-test/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Илья Воронов — юрист, эксперт в медицинском праве" />
   <meta property="og:description" content="Защита врачей и клиник в сложных медицинских спорах. Судебные дела, претензии пациентов, сопровождение проверок." />
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:image" content="logo.png" />
+  <meta property="og:url" content="https://schneider1306.github.io/-claude-test/" />
+  <meta property="og:image" content="https://schneider1306.github.io/-claude-test/logo.png" />
+  <meta property="og:image:alt" content="FIAT JUSTITIA — юридическая практика Ильи Воронова" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23173A68'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia%2Cserif' font-size='13' fill='%23B49A67'%3EFJ%3C/text%3E%3C/svg%3E" />
@@ -22,15 +26,12 @@
   <link rel="preload" as="image" href="logo.webp?v=6" />
   <!-- Preload hero portrait -->
   <link rel="preload" as="image" href="portrait-main.jpg?v=1" />
-  <!-- Preload about portrait -->
-  <link rel="preload" as="image" href="portrait-about.jpg?v=1" />
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Prata&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="./fiat-site-v2.css?v=15" />
+  <link rel="stylesheet" href="./fiat-site-v2.css?v=16" />
 
   <!-- Schema.org -->
   <script type="application/ld+json">
@@ -62,21 +63,16 @@
     .intro { display: none !important; }
     [data-reveal] { opacity: 1 !important; transform: none !important; }
   </style></noscript>
-  <!-- Disable scroll restoration and clear hash before browser scrolls to anchor -->
-  <script>
-    history.scrollRestoration = 'manual';
-    if (window.location.hash) {
-      history.replaceState(null, '', window.location.pathname + window.location.search);
-    }
-  </script>
 </head>
 <body>
 
+  <a class="skip-link" href="#mainContent">Перейти к содержанию</a>
+
   <!-- Intro overlay -->
-  <div class="intro" id="intro" aria-hidden="true">
+  <button type="button" class="intro" id="intro" aria-label="Пропустить заставку">
     <img class="intro__logo" src="logo.webp?v=6" alt="" />
-    <p class="intro__hint">Нажмите, чтобы продолжить</p>
-  </div>
+    <span class="intro__hint">Нажмите, чтобы продолжить</span>
+  </button>
 
   <!-- Header -->
   <header class="header" id="header">
@@ -100,7 +96,7 @@
         <svg class="burger__icon burger__icon--close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu" inert>
       <nav aria-label="Мобильная навигация">
         <ul class="mobile-menu__list">
           <li><a class="mobile-menu__link" href="#who">Услуги</a></li>
@@ -114,10 +110,10 @@
     </div>
   </header>
 
-  <main>
+  <main id="mainContent">
 
     <!-- Hero -->
-    <section class="hero" id="hero" aria-labelledby="heroHeading">
+    <section class="hero" id="hero" aria-label="Главная информация">
       <div class="container hero__inner">
         <div class="hero__content">
           <p class="eyebrow" data-reveal>FIAT JUSTITIA&thinsp;&bull;&thinsp;МЕДИЦИНСКОЕ ПРАВО</p>
@@ -152,7 +148,7 @@
     </section>
 
     <!-- Trust bar -->
-    <div class="trust-bar" aria-label="Профессиональный опыт">
+    <section class="trust-bar" aria-label="Профессиональный опыт">
       <div class="trust-bar__scroll">
         <div class="trust-item">
           <span class="trust-item__label">Специализация</span>
@@ -174,7 +170,7 @@
           <span class="trust-item__value">Удалённо по всей России</span>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Who -->
     <section class="section section--white" id="who" aria-labelledby="whoHeading">
@@ -241,28 +237,28 @@
         <!-- Mobile: accordion -->
         <div class="practice-accordion" id="practiceAccordion">
           <div class="acc-item">
-            <button class="acc-trigger" aria-expanded="false">
+            <button type="button" class="acc-trigger" id="practiceTrigger1" aria-expanded="false" aria-controls="practicePanel1">
               <span class="acc-num" aria-hidden="true">01</span>
               <span class="acc-title">Судебные споры</span>
               <svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="acc-body"><p>Защита по искам пациентов, споры о качестве медицинской помощи, возмещении вреда здоровью и компенсации морального вреда.</p></div>
+            <div class="acc-body" id="practicePanel1" role="region" aria-labelledby="practiceTrigger1" aria-hidden="true"><p>Защита по искам пациентов, споры о качестве медицинской помощи, возмещении вреда здоровью и компенсации морального вреда.</p></div>
           </div>
           <div class="acc-item">
-            <button class="acc-trigger" aria-expanded="false">
+            <button type="button" class="acc-trigger" id="practiceTrigger2" aria-expanded="false" aria-controls="practicePanel2">
               <span class="acc-num" aria-hidden="true">02</span>
               <span class="acc-title">Претензии и проверки</span>
               <svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="acc-body"><p>Подготовка ответов пациентам, сопровождение проверок Росздравнадзора, Роспотребнадзора, прокуратуры и иных органов.</p></div>
+            <div class="acc-body" id="practicePanel2" role="region" aria-labelledby="practiceTrigger2" aria-hidden="true"><p>Подготовка ответов пациентам, сопровождение проверок Росздравнадзора, Роспотребнадзора, прокуратуры и иных органов.</p></div>
           </div>
           <div class="acc-item">
-            <button class="acc-trigger" aria-expanded="false">
+            <button type="button" class="acc-trigger" id="practiceTrigger3" aria-expanded="false" aria-controls="practicePanel3">
               <span class="acc-num" aria-hidden="true">03</span>
               <span class="acc-title">Документация и экспертиза</span>
               <svg class="acc-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="acc-body"><p>Анализ медицинских документов, договоров и информированных согласий, работа с судебно-медицинскими экспертами, подготовка вопросов и возражений.</p></div>
+            <div class="acc-body" id="practicePanel3" role="region" aria-labelledby="practiceTrigger3" aria-hidden="true"><p>Анализ медицинских документов, договоров и информированных согласий, работа с судебно-медицинскими экспертами, подготовка вопросов и возражений.</p></div>
           </div>
         </div>
       </div>
@@ -288,7 +284,7 @@
               <p>Подключаюсь к работе на любом этапе: от первичной оценки ситуации и ответа на претензию до сопровождения проверки, экспертизы или судебного разбирательства. Работаю с клиентами из разных регионов России.</p>
             </div>
           </div>
-          <button type="button" class="about__expand" id="aboutExpand" aria-expanded="false">
+          <button type="button" class="about__expand" id="aboutExpand" aria-expanded="false" aria-controls="aboutExtra">
             <span>Подробнее</span>
             <svg class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
@@ -361,39 +357,39 @@
         </header>
         <div class="faq-list">
           <div class="faq-item" data-reveal>
-            <button class="faq-trigger" aria-expanded="false">
+            <button type="button" class="faq-trigger" id="faqTrigger1" aria-expanded="false" aria-controls="faqPanel1">
               <span>Работаете ли вы с клиентами из других регионов?</span>
               <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="faq-body"><p>Да, работаю дистанционно с врачами, клиниками и медицинскими организациями из разных регионов России. Документы передаются в электронном виде, консультации проходят в удобном формате.</p></div>
+            <div class="faq-body" id="faqPanel1" role="region" aria-labelledby="faqTrigger1" aria-hidden="true"><p>Да, работаю дистанционно с врачами, клиниками и медицинскими организациями из разных регионов России. Документы передаются в электронном виде, консультации проходят в удобном формате.</p></div>
           </div>
           <div class="faq-item" data-reveal>
-            <button class="faq-trigger" aria-expanded="false">
+            <button type="button" class="faq-trigger" id="faqTrigger2" aria-expanded="false" aria-controls="faqPanel2">
               <span>Какие документы нужны для первичной оценки?</span>
               <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="faq-body"><p>Для первичной оценки достаточно кратко описать ситуацию и приложить имеющиеся документы: претензию пациента, исковое заявление, уведомление о проверке, медицинскую документацию или заключение эксперта.</p></div>
+            <div class="faq-body" id="faqPanel2" role="region" aria-labelledby="faqTrigger2" aria-hidden="true"><p>Для первичной оценки достаточно кратко описать ситуацию и приложить имеющиеся документы: претензию пациента, исковое заявление, уведомление о проверке, медицинскую документацию или заключение эксперта.</p></div>
           </div>
           <div class="faq-item" data-reveal>
-            <button class="faq-trigger" aria-expanded="false">
+            <button type="button" class="faq-trigger" id="faqTrigger3" aria-expanded="false" aria-controls="faqPanel3">
               <span>Можно ли обратиться до получения претензии или иска?</span>
               <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="faq-body"><p>Да, это часто лучший момент для обращения. Ранняя оценка рисков позволяет выстроить позицию до начала формального разбирательства и иногда помогает избежать его.</p></div>
+            <div class="faq-body" id="faqPanel3" role="region" aria-labelledby="faqTrigger3" aria-hidden="true"><p>Да, это часто лучший момент для обращения. Ранняя оценка рисков позволяет выстроить позицию до начала формального разбирательства и иногда помогает избежать его.</p></div>
           </div>
           <div class="faq-item" data-reveal>
-            <button class="faq-trigger" aria-expanded="false">
+            <button type="button" class="faq-trigger" id="faqTrigger4" aria-expanded="false" aria-controls="faqPanel4">
               <span>Как определяется стоимость работы?</span>
               <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="faq-body"><p>Стоимость зависит от сложности ситуации, объёма документов и характера задач. После первичной оценки я сообщаю конкретные условия сотрудничества.</p></div>
+            <div class="faq-body" id="faqPanel4" role="region" aria-labelledby="faqTrigger4" aria-hidden="true"><p>Стоимость зависит от сложности ситуации, объёма документов и характера задач. После первичной оценки я сообщаю конкретные условия сотрудничества.</p></div>
           </div>
           <div class="faq-item" data-reveal>
-            <button class="faq-trigger" aria-expanded="false">
+            <button type="button" class="faq-trigger" id="faqTrigger5" aria-expanded="false" aria-controls="faqPanel5">
               <span>Можно ли гарантировать результат дела?</span>
               <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="faq-body"><p>Нет. Результат судебного или административного разбирательства гарантировать невозможно. До начала работы вы получите честную оценку перспектив и рисков — без преувеличений и ложных обещаний.</p></div>
+            <div class="faq-body" id="faqPanel5" role="region" aria-labelledby="faqTrigger5" aria-hidden="true"><p>Нет. Результат судебного или административного разбирательства гарантировать невозможно. До начала работы вы получите честную оценку перспектив и рисков — без преувеличений и ложных обещаний.</p></div>
           </div>
         </div>
       </div>
@@ -413,7 +409,7 @@
         <div class="contacts__info">
           <a href="tel:+79191133039" class="contact-link">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.29 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 5.55 5.55l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            +7&nbsp;919&nbsp;113-30-39
+            +7&nbsp;919&nbsp;113&#8209;30&#8209;39
           </a>
           <a href="mailto:fiat-justitia13@mail.ru" class="contact-link">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -440,10 +436,10 @@
   </footer>
 
   <!-- Back to top -->
-  <button type="button" class="back-to-top" id="backToTop" aria-label="Вернуться наверх">
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Вернуться наверх" tabindex="-1">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <script src="./fiat-site-v2.js?v=9" defer></script>
+  <script src="./fiat-site-v2.js?v=10" defer></script>
 </body>
 </html>
