@@ -100,6 +100,11 @@ ul, ol { list-style: none; }
   background: radial-gradient(ellipse at center, rgba(210, 185, 120, 0.22) 0%, rgba(140, 110, 60, 0.08) 45%, transparent 70%);
   pointer-events: none;
 }
+@media (min-width: 769px) {
+  .intro::before {
+    display: none;
+  }
+}
 .intro__logo {
   position: relative;
   width: min(360px, 88vw);
