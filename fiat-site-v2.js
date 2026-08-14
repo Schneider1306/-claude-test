@@ -7,7 +7,27 @@
   const intro = document.getElementById('intro');
   if (!intro) return;
 
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  function introWasSeen() {
+    try {
+      return window.sessionStorage.getItem('fj-intro-seen') === '1';
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function rememberIntro() {
+    try {
+      window.sessionStorage.setItem('fj-intro-seen', '1');
+    } catch (_) {
+      // Хранилище может быть отключено — это не мешает работе сайта.
+    }
+  }
+
+  if (
+    window.location.hash ||
+    introWasSeen() ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) {
     intro.remove();
     return;
   }
@@ -22,7 +42,7 @@
   function unlock() {
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
-    // Page is already at scrollY=0 — the inline head script set it before restore fired
+    rememberIntro();
     intro.remove();
     revealHero();
   }
@@ -34,10 +54,10 @@
     unlock();
   }
 
-  // CSS animation drives the 25 s sequence; animationend is the trigger
+  // CSS-анимация короткая; animationend снимает блокировку страницы.
   intro.addEventListener('animationend', onAnimEnd);
   // Fallback for iOS Safari where animationend can be unreliable
-  setTimeout(function () { if (!done) { done = true; unlock(); } }, 25500);
+  setTimeout(function () { if (!done) { done = true; unlock(); } }, 3200);
 
   // Tap anywhere to skip
   intro.addEventListener('click', function () {
@@ -66,6 +86,10 @@ function revealHero() {
 }
 
 function setupReveal() {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('visible'));
+    return;
+  }
   const io = new IntersectionObserver((entries) => {
     entries.forEach(({ target, isIntersecting }) => {
       if (!isIntersecting) return;
@@ -109,11 +133,15 @@ function setupReveal() {
 
   function openMenu()  {
     burger.setAttribute('aria-expanded', 'true');
+    burger.setAttribute('aria-label', 'Закрыть меню навигации');
+    menu.inert = false;
     menu.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
   function closeMenu() {
     burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Открыть меню навигации');
+    menu.inert = true;
     menu.classList.remove('open');
     document.body.style.overflow = '';
   }
@@ -135,6 +163,17 @@ function setupReveal() {
       closeMenu();
     }
   });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) {
+      closeMenu();
+      burger.focus();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 960 && menu.classList.contains('open')) closeMenu();
+  });
 })();
 
 /* ================================================================
@@ -152,12 +191,15 @@ function setupAccordions() {
         group.querySelectorAll('[aria-expanded="true"]').forEach(other => {
           if (other !== this) {
             other.setAttribute('aria-expanded', 'false');
-            other.nextElementSibling.style.maxHeight = null;
+            const otherBody = other.nextElementSibling;
+            otherBody.setAttribute('aria-hidden', 'true');
+            otherBody.style.maxHeight = null;
           }
         });
       }
 
       this.setAttribute('aria-expanded', String(!expanded));
+      body.setAttribute('aria-hidden', String(expanded));
       body.style.maxHeight = expanded ? null : body.scrollHeight + 'px';
     });
   });
@@ -190,7 +232,9 @@ function setupAccordions() {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      btn.classList.toggle('visible', window.scrollY > 800);
+      const visible = window.scrollY > 800;
+      btn.classList.toggle('visible', visible);
+      btn.tabIndex = visible ? 0 : -1;
       ticking = false;
     });
   }, { passive: true });
