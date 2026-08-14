@@ -7,28 +7,26 @@
   const intro = document.getElementById('intro');
   if (!intro) return;
 
-  function introWasSeen() {
-    try {
-      return window.sessionStorage.getItem('fj-intro-seen') === '1';
-    } catch (_) {
-      return false;
-    }
-  }
+  const navigationType = document.documentElement.dataset.navigationType ?? 'navigate';
+  const isReload = navigationType === 'reload';
 
-  function rememberIntro() {
-    try {
-      window.sessionStorage.setItem('fj-intro-seen', '1');
-    } catch (_) {
-      // Хранилище может быть отключено — это не мешает работе сайта.
-    }
+  function finishReloadReset() {
+    if (!isReload) return;
+    window.scrollTo(0, 0);
+    // После завершения текущего обновления возвращаем штатное поведение
+    // кнопок «Назад» и «Вперёд».
+    setTimeout(function () {
+      if ('scrollRestoration' in history) history.scrollRestoration = 'auto';
+    }, 0);
   }
 
   if (
-    window.location.hash ||
-    introWasSeen() ||
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    navigationType === 'back_forward' ||
+    (!isReload && window.location.hash)
   ) {
     intro.remove();
+    finishReloadReset();
     return;
   }
 
@@ -42,8 +40,8 @@
   function unlock() {
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
-    rememberIntro();
     intro.remove();
+    finishReloadReset();
     revealHero();
   }
 
