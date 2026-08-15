@@ -52,10 +52,10 @@
     unlock();
   }
 
-  // CSS-анимация короткая; animationend снимает блокировку страницы.
+  // animationend снимает блокировку страницы после семисекундной заставки.
   intro.addEventListener('animationend', onAnimEnd);
   // Fallback for iOS Safari where animationend can be unreliable
-  setTimeout(function () { if (!done) { done = true; unlock(); } }, 3200);
+  setTimeout(function () { if (!done) { done = true; unlock(); } }, 7500);
 
   // Tap anywhere to skip
   intro.addEventListener('click', function () {
