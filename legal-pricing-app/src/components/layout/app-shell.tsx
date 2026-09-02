@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Calculator, LayoutDashboard, ListChecks, BarChart3, Settings, BookOpen } from "lucide-react";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
+import { LogoutButton } from "@/components/layout/logout-button";
 
 const NAV_ITEMS = [
   { href: "/", label: "Главная", icon: LayoutDashboard },
@@ -11,7 +12,13 @@ const NAV_ITEMS = [
   { href: "/settings", label: "Настройки", icon: Settings },
 ];
 
-export function AppShell({ children }: { children: React.ReactNode }) {
+export function AppShell({
+  children,
+  showLogout = false,
+}: {
+  children: React.ReactNode;
+  showLogout?: boolean;
+}) {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="no-print sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
@@ -32,6 +39,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               </Link>
             ))}
             <ThemeToggle />
+            {showLogout && <LogoutButton />}
           </nav>
         </div>
       </header>

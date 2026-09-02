@@ -1,0 +1,14 @@
+node_modules
+.next
+data
+.e2e-data
+.git
+test-results
+playwright-report
+blob-report
+playwright/.cache
+e2e
+*.log
+npm-debug.log*
+.env
+.env.local

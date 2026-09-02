@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ToastProvider } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { AppShell } from "@/components/layout/app-shell";
 
 export const metadata: Metadata = {
   title: "Калькулятор стоимости юридических услуг",
@@ -47,9 +46,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col font-sans">
         <TooltipProvider delayDuration={200}>
-          <ToastProvider>
-            <AppShell>{children}</AppShell>
-          </ToastProvider>
+          <ToastProvider>{children}</ToastProvider>
         </TooltipProvider>
       </body>
     </html>
